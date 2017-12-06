@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <link type="text/css" rel="stylesheet" href="form.css">
+    <link type="text/css" rel="stylesheet" href="nav.css">
+    <script type="text/javascript" src="permission.js"></script>
+    <script type="text/javascript" src="logged_in.js"></script>
+
+    <script type="text/javascript">
+        function saveGame() {
+            window.alert("Game Added");
+            /*
+                Template
+                "type": "match",
+                "opponent": "UC Berkley",
+                "time": "20:00",
+                "date": "2017/11/20",
+                "location": "home",
+                "address": "Rimac",
+                "statsFor": [0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "statsAgainst": [0, 0, 0, 0, 0, 0, 0, 0, 0]
+            */
+            var team = JSON.parse(localStorage.getItem("team"));
+            var newGame = {}
+            newGame["opponent"] = document.forms["gameForm"]["opponent"].value;
+            newGame["date"] = document.forms["gameForm"]["date"].value;
+            newGame["time"] = document.forms["gameForm"]["time"].value;
+            newGame["address"] = document.forms["gameForm"]["location"].value;
+            newGame["statsFor"] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+            newGame["statsAgainst"] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+            var home_status = document.forms["gameForm"]["home"].checked;
+            var away_status = document.forms["gameForm"]["away"].checked;
+            if (home_status) {
+                newGame["location"] = "home";
+            }
+            if (away_status.value == 1) {
+                newGame["location"] = "away";
+            }
+
+            var match_checked = document.getElementById("match");
+            var practice_checked = document.getElementById("practice");
+            if (match_checked.checked) {
+                newGame["type"] = "match";
+            }
+            if (practice_checked.checked) {
+                newGame["type"] = "practice";
+            }
+
+            team.schedule.push(newGame);
+
+
+            localStorage.setItem("team", JSON.stringify(team));
+        }
+    </script>
+    
+    <title>Add Game</title>
+</head>
+<body>
+    <header id="topPage">
+    <h1>Team MBR</h1>
+    <nav>
+            <a href="index.html">Home</a>
+            <a href="viewSchedule.html">Schedule</a>
+            <a href="viewSquad.html">Squad</a>
+     </nav>
+    </header>
+
+    <h2 style="text-align:center">Add Game</h2>
+    <form name="gameForm" method="POST" action="viewSchedule.html">
+        
+        <!--Opponent-->
+            <label for="opponent">Opponent Team:</label>
+                <input type="text" id="opponent" placeholder="Opponent Team" />
+        <!--Date-->
+            <label for="date">Date:</label>
+                <input type="date" id="date" />
+        <!--Time-->
+            <label for="time">Time:</label>
+                <input type="time" id="time" />        
+
+        <!--Location-->
+            <label for="location">Location:</label>
+                <input type="text" id="location" placeholder="Location" />
+        <!--Home/Away-->
+            <label>Status:</label>
+            <br />
+            <label><input type="radio" id="home" name="status" value="sethome">Home</label>
+            <br />
+            <label><input type="radio" id="away" name="status" value="setaway">Away</label>
+            <br />
+            <label>Type of Game:</label>
+            <br />
+            <label><input type="checkbox" id="match" name="gametype" value="match" />Match</label>
+            <br />
+            <label><input type="checkbox" id="practice" name="gametype" value="practice"/>Practice</label>
+
+        <!--Add to Schedule-->
+        <button type="button" onclick="saveGame()">Add Game</button>
+    </form>
+
+</body>
+</html>

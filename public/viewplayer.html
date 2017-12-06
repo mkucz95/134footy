@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link type="text/css" rel="stylesheet" href="nav.css">  
+            <link type="text/css" rel="stylesheet" href="table.css">            
+            <title>View Player</title>
+    <script type="text/javascript" src="logged_in.js"></script>
+
+    <script>
+        function var1() {
+            var team = JSON.parse(localStorage.getItem("team"));
+            var view = localStorage.getItem("viewplayer");
+            var edit = team.players[view];
+            document.getElementById("position").innerHTML = edit.position;
+            document.getElementById("jerseynum").innerHTML = edit.jerseynumber;
+            document.getElementById("dob").innerHTML = edit.dob;
+            document.getElementById("playername").innerHTML = edit.fname + " " + edit.lname;
+
+
+            document.getElementById("goals").innerHTML = edit.stats["goal"];
+            document.getElementById("shots").innerHTML = edit.stats["shot"];
+            document.getElementById("fouls").innerHTML = edit.stats["foul"];
+            document.getElementById("redcards").innerHTML = edit.stats["red"];
+            document.getElementById("yellowcards").innerHTML = edit.stats["yellow"];
+            document.getElementById("corner").innerHTML = edit.stats["corner"];
+            document.getElementById("goalkick").innerHTML = edit.stats["gKick"];
+            document.getElementById("throw").innerHTML = edit.stats["throw"];
+            document.getElementById("penalty").innerHTML = edit.stats["pen"];
+
+
+
+
+           /* document.getElementById("assists").innerHTML = edit.stats[1];
+            document.getElementById("games").innerHTML = edit.stats[2];
+
+
+            document.getElementById("scored").innerHTML = edit.stats[7];
+
+            document.getElementById("appearances").innerHTML = edit.stats[9];*/
+            
+           
+
+
+
+            /*if (localStorage.getItem("players")) {
+                var player = JSON.parse(localStorage.getItem("players"));
+                var view = localStorage.getItem("viewplayer");
+                var edit = JSON.parse(localStorage.getItem(player[view]));
+                document.getElementById("position").innerHTML = edit[4];
+                document.getElementById("jerseynum").innerHTML = edit[3];   
+                document.getElementById("dob").innerHTML = edit[2];
+                document.getElementById("playername").innerHTML = player[view];
+                if (edit[0]) {
+                    document.getElementById("profilePic").src = edit[0];
+                }
+            }*/
+        }
+        window.onload = var1;
+
+
+    </script>
+    </head>
+    <body>
+        <header id="topPage">
+            <h1>Team MBR</h1>
+            <nav>
+                    <a href="index.html">Home</a>
+                    <a href="viewSquad.html">Back</a>
+             </nav>
+        </header>
+                        <img id="profilePic" src="soccer_ball.png" alt="Player Image" style="max-width:10%;">
+                            <h2 id="playername">John Smith</h2>
+                            <button onclick="window.location.href='editplayer.html'">Edit</button>
+
+        <table>
+            <tr><td>Position</td> <td id="position">Midfield</td></tr>
+            <tr><td>Jersey #</td><td id="jerseynum">10</td></tr>
+            <tr><td>Date of Birth</td><td id="dob">11/05/2017</td></tr>      
+        </table>
+
+        <table>
+            <thead><tr><th>Player Season Statistics</th><th></th></tr></thead>
+            <tbody>
+                    <tr><td>Goals</td><td id="goals">3</td></tr>
+                    <!---<tr><td>Assists</td><td id="assists">6</td></tr>
+                    <tr><td>Games Played</td><td id="games">6</td></tr>-->
+                <tr><td>Shots on Goal</td><td id="shots">15</td></tr>
+                    <tr><td>Fouls</td><td id="fouls">5</td></tr>
+                    <tr><td>Red Cards</td><td id="redcards">1</td></tr>
+                    <tr><td>Yellow Cards</td><td id="yellowcards">2</td></tr>
+                <tr><td>Corner Kicks</td><td id="corner">15</td></tr>
+                <tr><td>Goal Kicks</td><td id="goalkick">1</td></tr>
+                <tr><td>Throw Ins</td><td id="throw">7</td></tr>
+                <tr><td>Penalty Kicks</td><td id="penalty">2</td></tr>
+                    <!---<tr><td>Goals Scored</td><td id="scored">1</td></tr>
+                    <tr><td>Penalty Kicks</td><td id="penalty">0</td></tr>
+                    <tr><td>Appearances</td><td id="appearances">5</td></tr>
+                    <tr><td>Throw Ins</td><td id="throw">7</td></tr>-->
+            </tbody>
+        </table>
+    </body>
+</html>

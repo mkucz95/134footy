@@ -1,0 +1,110 @@
+﻿h4 {
+    font-size:1.5rem;
+    font-weight: 500;
+    margin-bottom: .5rem;
+    margin-top:0;    
+}
+
+#save{
+    background-color:dodgerblue;
+    color:white;
+    display:block;
+    width:100%;
+    font-size:1.3rem;
+}
+
+#edit_stats {
+    display: block;
+    width: 100%;
+    color: #ff0000;
+    background-color: transparent;
+    background-image: none;
+    border-color: #ff0000;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-transform: none;
+}
+
+#edit_stats:hover {
+    background-color:#ff0000;
+    color:white;
+    text-decoration:underline;
+}
+
+.minus{
+    background-color: #d9534f;
+    width:2rem;
+    height:2rem;
+    color:white;
+}
+
+.plus{
+    background-color: #5cb85c;
+    float: left;
+    width: 2rem;
+    height: 2rem;
+    color: white;
+}
+
+.left{
+    float:left;
+}
+
+.right{
+    float: right;    
+}
+
+#edit{
+    display:flex;
+    justify-content:flex-end;
+    text-decoration:none;
+}
+
+button:not(#tempSave){
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    padding: .5rem 1rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: all .2s ease-in-out;
+}
+
+table{
+    table-layout: fixed; width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+    background-color: transparent;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+th{
+    vertical-align: bottom;
+    border-bottom: 2px solid #eceeef;
+}
+
+td, th{
+    vertical-align: top;
+    border-top: 1px solid #eceeef;
+    padding: .3rem;
+}
+
+body{
+    font-family: "Helvetica Neue", Arial ,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #292b2c;
+    background-color: #fff;
+}

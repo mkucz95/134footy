@@ -1,0 +1,120 @@
+h2{
+    font-size: 1.4rem;
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    margin-top: 0;
+}
+
+body{
+    font-family: "Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    margin: 0; 
+}
+
+.media{
+    display: flex;
+    align-items: flex-start;    
+}
+
+.media h2{
+    flex: 1;
+}
+
+button, input{
+    overflow: visible;
+        font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;    
+    -webkit-rtl-ordering: logical;
+    cursor: auto;
+    
+}
+
+
+
+form>input{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    margin-bottom: 1rem;
+    
+}
+
+button{
+    display: block;
+    width: 100%;
+    color: #007bff;
+    background-color: transparent;
+    background-image: none;
+    border-color: #007bff;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-transform: none;    
+}
+
+label{
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-bottom: .5rem;
+}
+
+#save {
+    display: block;
+    width: 100%;
+    color: #007bff;
+    background-color: transparent;
+    background-image: none;
+    border-color: #007bff;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-transform: none;
+}
+
+#delete {
+    display: block;
+    width: 100%;
+    color: #ff0000;
+    background-color: transparent;
+    background-image: none;
+    border-color: #ff0000;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-transform: none;
+}

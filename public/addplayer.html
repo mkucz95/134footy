@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link type="text/css" rel="stylesheet" href="nav.css">
+            <link type="text/css" rel="stylesheet" href="form.css">            
+            <title>Add Player</title>
+        <script type="text/javascript" src="permission.js"></script>
+        <script type="text/javascript" src="logged_in.js"></script>
+
+        <script>
+            /*if (!localStorage.getItem('logged_in')) {
+                alert('Not Logged In');
+                window.location = "login.html";
+            }
+            else if (localStorage.getItem('permission') == 'false') {
+                alert('Cannot access page');
+                window.location = "index.html"
+            }*/
+
+            function add() {
+                var fname = document.forms["newPlayer"]["fname"].value;
+                var lname = document.forms["newPlayer"]["lname"].value;
+                /*if (localStorage.getItem("players")) {
+                    var player = JSON.parse(localStorage.getItem("players"));
+                    player.push(fname + " " + lname);
+                    localStorage.setItem("players", JSON.stringify(player));
+                }
+                else {
+                    var player = []
+                    player.push(fname + " " + lname);
+                    localStorage.setItem("players", JSON.stringify(player));
+                }*/
+
+                var team = JSON.parse(localStorage.getItem("team"));
+
+
+
+                var edit = {};
+                var img = (document.forms["newPlayer"]["profileImg"].value)
+                var imag = img.replace(/^.*[\\\/]/, '');
+                var email = document.forms["newPlayer"]["email"].value;
+                var dob = document.forms["newPlayer"]["dob"].value;
+                var jnum = document.forms["newPlayer"]["jerseynumber"].value;
+                var position = document.forms["newPlayer"]["position"].value;
+                var captain = (document.forms["newPlayer"]["captain"].checked).toString();
+
+
+                edit["fname"] = fname;
+                edit["lname"] = lname;
+                edit["email"] = email;
+                edit["dob"] = dob;
+                edit["jerseynumber"] = jnum;
+                edit["position"] = position;
+                edit["pic"] = imag;
+                edit["captain"] = captain;
+                edit["starter"] = "false";
+                edit["stats"] = {
+                    'assist': 0,
+                    'goal': 0,
+                    'shot': 0,
+                    'onGoal': 0,
+                    'foul': 0,
+                    'red': 0,
+                    'yellow': 0,
+                    'corner': 0,
+                    'gKick': 0,
+                    'throw': 0,
+                    'pen': 0
+                }
+                team.players.push(edit);
+                localStorage.setItem("team", JSON.stringify(team));
+
+
+                    /*edit.push(imag);
+                    edit.push(email);
+                    edit.push(dob);
+                    edit.push(jnum);
+                    edit.push(position);
+                    edit.push(captain);
+                    edit.push(false);
+                    localStorage.setItem(fname + " " + lname, JSON.stringify(edit));*/
+                }
+
+        </script>
+        
+    </head>
+    <body>
+            <header id="topPage">
+                    <h1>Team MBR</h1>
+                        <nav>
+                            <a href="index.html">Home</a>
+                            <a href="viewSchedule.html">Schedule</a>
+                            <a href="viewSquad.html">Squad</a>
+                        </nav>
+                    </header>
+
+        <img class="media" id="chosenPic" src="soccer_ball.png" alt="upload image">
+        <h2 class="media">Add Player</h2>
+        
+        <form method="post" name="newPlayer" action="viewSquad.html" onsubmit="return add()">
+            <input type="file" name="profileImg" accept="image/*" onchange=""><br>                
+            <label for="fname">First Name:</label> 
+            <input name="fname" type="text" id="fname" required><br>
+            <label for="lname">Last Name</label>
+            <input name="lname" type="text" id="lname" required><br>
+            <label for="playerEmail">Email</label>
+            <input name="email" type="email" id="playerEmail" required><br>
+            <label for="dob">Date of Birth</label>
+            <input name="dob" type="date" id="dob" required><br>
+            <label for="jersey">Jersey Number</label>
+            <input name="jerseynumber" type="number" id="jersey" min="0" max="99" required><br>
+            <label for="position">Position</label>
+            <input name="position" type="text" id="position" maxlength="15"><br>
+            <label for="captain">Captain:</label>
+            <input name="captain" id="captain" type="checkbox" value="yes"><br>
+            <input type="submit" value="Add Player">
+        </form>
+
+    </body>
+</html>

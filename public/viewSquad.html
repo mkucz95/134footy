@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link type="text/css" rel="stylesheet" href="nav.css">   
+            <link type="text/css" rel="stylesheet" href="table.css">                    
+            <title>View Squad</title>
+
+    <script type="text/javascript" src="logged_in.js"></script>
+            <style>button{
+                    display: block;
+                    width: 100%;
+                    color: #007bff;
+                    background-color: transparent;
+                    background-image: none;
+                    border-color: #007bff;
+                    font-weight: 400;
+                    text-align: center;
+                    white-space: nowrap;
+                    padding: .375rem .75rem;
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    border-radius: .25rem;
+                    transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                    text-transform: none;  }
+                   
+                    tr td:first-child{
+                    font-weight: 600; }
+</style>
+
+    </head>
+    <body>
+            <header id="topPage">
+                    <h1>Team MBR</h1>
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="viewSchedule.html">Schedule</a>
+                        <a href="#">Squad</a>
+                    </nav>
+                </header>
+        <script>
+
+
+            document.write("<table><thead><tr><th></th><th>Player</th><th>Position</th><th>Number</th><th>Age</th></tr></thead>")
+            //document.write("<tr ><td >STARTERS</td><td></td><td></td><td></td><td></td> </tr>");
+            //if (localStorage.getItem("players")) {
+            // var player = JSON.parse(localStorage.getItem("players"));
+            var name;
+            var position;
+            var jerseynum;
+            var date;
+            var today_date = new Date();
+            var today_year = today_date.getFullYear();
+            var today_month = today_date.getMonth();
+            var today_day = today_date.getDate();
+            var age;
+            var team = JSON.parse(localStorage.getItem("team"));
+                for (j = 0; j < team.players.length; j++) {
+                    name = team.players[j].fname + " " + team.players[j].lname;
+                    position = team.players[j].position;
+                    jerseynum = team.players[j].jerseynumber;
+                    date = new Date(team.players[j].dob);
+                    age = today_year - date.getFullYear();
+                    if (today_month < (date.getMonth() - 1)) {
+                        age--;
+                    }
+                    if (((date.getMonth() - 1) == today_month) && (today_day < date.getDate())) {
+                        age--;
+                    }
+                    document.write("<tr id = " + j + " onclick= edit(this.id)" + "><td></td> <td>" + name + "</td> <td>" + position + "</td> <td>" + jerseynum + "</td><td>" + age + "</td></tr>")
+              //  }
+
+
+
+                /*for (i = 0; i < player.length; i++) {
+                    var edit = JSON.parse(localStorage.getItem(player[i]));
+                    var today_date = new Date();
+                    var today_year = today_date.getFullYear();
+                    var today_month = today_date.getMonth();
+                    var today_day = today_date.getDate();
+                    var date = new Date(edit[2]);
+                    var age = today_year - date.getFullYear();
+                    if (today_month < (date.getMonth() - 1)) {
+                        age--;
+                    }
+                    if (((date.getMonth() - 1) == today_month) && (today_day < date.getDate())) {
+                        age--;
+                    }
+                    if (edit[6]) {
+                        document.write("<tr id = " + i + " onclick= edit(this.id)" + "><td></td> <td>" + player[i] + "</td> <td>" + edit[4] + "</td> <td>" + edit[3] + "</td><td>" + age + "</td></tr>")
+                    }
+                }*/
+            }
+            document.write("</table>");
+        </script>
+        <script>
+            function edit(id) {
+
+            localStorage.setItem('viewplayer', id);
+            window.location.href = 'viewplayer.html';
+        }
+        </script>
+        <!---
+        <table>
+           <thead><tr><th>Player</th><th>Position</th><th>Number</th><th>Age</th></tr></thead>
+           <tbody>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Central Midfielder</td><td>1</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Craig Van Der Von Vanning</td><td>Keeper</td><td>8</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Central Defence</td><td>7</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Fullback</td><td>6</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td> Midfielder</td><td>5</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Left Wing</td><td>4</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Right Wing</td><td>3</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Left Defence</td><td>2</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Right Defence</td><td>9</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Forward</td><td>11</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Forward</td><td>10</td><td>16</td></tr>
+              <tr style="color:#fff;background-color:#292b2c;"><td></td><td>BENCH</td><td></td><td></td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Central Midfielder</td><td>15</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Central Defender</td><td>16</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Central Attacked</td><td>17</td><td>16</td></tr>
+              <tr onclick="window.location.href='viewplayer.html'"><td>Mati Kucz</td><td>Goalkeeper</td><td>18</td><td>16</td></tr>
+            </tbody>
+        </table>-->
+        <button onclick="window.location.href='addplayer.html'">Add Player</button>        
+    </body>
+</html>

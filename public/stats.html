@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="game_stats.css" />
+    <link type="text/css" rel="stylesheet" href="nav.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Edit Game Stats</title>
+    <script type="text/javascript" src="permission.js"></script>
+    <script type="text/javascript" src="logged_in.js"></script>
+</head>
+
+<body style="text-align:center">
+    <header id="topPage">
+        <h1>Team MBR</h1>
+        <nav>
+            <a href="homepage.html">Home</a>
+            <a href="viewSchedule.html">Schedule</a>
+            <a href="viewSquad.html">Squad</a>
+        </nav>
+    </header>
+    <h4>MBR vs.<em class="opponentName" style="display:inline;">Enemies</em></h4>
+    <aside>-</aside>
+    <button class="editStat" onclick='openEdit("dataInput")'>Enter Stat</button>
+
+        <table>
+            <thead><tr><th> Goals</th></tr></thead>
+            <tbody><tr><td id="homegoal">0</td><td id="awaygoal">0</td></tr></tbody>
+        </table>
+       
+             <table>
+                <thead><tr><th>Shots</th></tr></thead>
+                <tbody><tr><td id="homeshot">0(0)</td><td id="awayshot">0(0)</td></tr></tbody>
+            </table>
+
+               <table class="fouls">
+                <thead><tr><th>Fouls</th></tr></thead>
+                <tbody><tr><td id="homefoul">0</td><td id="awayfoul">0</td></tr></tbody>
+            </table>
+            
+            <table>
+                <thead><tr><th>Red Cards</th></tr></thead>
+                <tbody><tr><td id="homered">0</td><td id="awayred">0</td></tr></tbody>
+            </table>
+            
+            <table class="yellow">
+                <thead><tr><th>Yellow Cards</th></tr></thead>
+                <tbody><tr><td id="homeyellow">0</td><td id="awayyellow">0</td></tr></tbody>
+            </table>
+            
+            <table>
+                <thead><tr><th>Corner Kicks</th></tr></thead>
+                <tbody><tr><td id="homecorner">0</td><td id="awaycorner">0</td></tr></tbody>
+            </table>
+            
+            <table class="goalkicks">
+                <thead><tr><th>Goal Kicks</th></tr></thead>
+                <tbody><tr><td id="homegKick">0</td><td id="awaygKick">0</td></tr></tbody>
+            </table>
+            
+              <table>
+                <thead><tr><th>Throw Ins</th></tr></thead>
+                <tbody><tr><td id="homethrow">0</td><td id="awaythrow">0</td></tr></tbody>
+            </table>
+            
+             <table>
+                    <thead><tr><th>Penalties</th></tr></thead>
+                    <tbody><tr><td id="homepen">0</td><td id="awaypen">0</td></tr></tbody>
+            </table>
+
+                <div id="dataInput" style="visibility:hidden;">
+                    <label>Choose Statistic:
+                    <select id="form-stat" name="stat" required>
+                        <option value="" disabled>Choose Stat</option>
+                        <option value="goal">Goal</option>
+                        <option value="shot">Shot off Target</option>
+                        <option value="onGoal">Shot on Target</option>
+                        <option value="foul">Foul</option>
+                        <option value="red">Red Card</option>
+                        <option value="yellow">Yellow Card</option>
+                        <option value="corner">Corner Kick</option>
+                        <option value="gKick">Goal Kick</option>
+                        <option value="throw">Throw In</option>
+                        <option value="pen">Penalty</option>
+                    </select></label>     
+                    
+                    <label>Choose Team                          
+                        <select id="form-team" name="team" required><option value="" disabled>Choose</option><option value="homeTeam">Home Team</option><option value="awayTeam" id="opponentOption">Opponent</option></select>
+                    </label>                                    
+                    
+                    <label>Assign to Player
+                        <select id="form-number" name="number" class="playerSelect" required><option disabled value="">Choose</option><option value="-1">no player</option></select>
+                    </label>
+
+                    <label>Action
+                        <select id="form-action" name="action" required><option disabled value="">Choose</option><option value="add">+</option><option value="minus">-</option></select>
+                    </label>
+                   
+                    <button class="editStat" id="cancel" onclick="closeEdit('dataInput')">Cancel</button>
+                    <button class="editStat" id="saveStat" onclick="save()">Save</button>     
+                 </div>            
+                 <script src="stats.js"></script>
+        </body>
+</html>

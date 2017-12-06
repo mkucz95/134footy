@@ -1,0 +1,152 @@
+{ 
+    "users":[
+    {
+        "fname":"Mati",
+        "lname":"Kucz",
+        "email": "mkucz@ucsd.edu",
+        "type":"coach",
+        "password":"secret"
+    },
+    {
+        "fname":"Raymond",
+        "lname":"Ho",
+        "email": "r4ho@ucsd.edu",
+        "type":"parent",
+        "password":"pizza"
+    }
+],
+    "team":{
+        "name": "MBR",
+        "location": "UC San Diego, 9500 Gilman Drive",
+        "players":[
+            {
+                "fname":"Brian",
+                "lname":"Thai",
+                "email": "brthair4ho@ucsd.edu",
+                "dob":"10/11/1994",
+                "jerseynumber":"11",
+                "position":"midfield",
+                "pic":"/",
+                "captain":"false",
+                "starter":"true",
+                "stats":{
+                    "assist":"0",
+                    "goal":"0",
+                    "shot":"0",
+                    "onGoal":"0",
+                    "foul":"0",
+                    "red":"0",
+                    "yellow":"0",
+                    "corner":"0",
+                    "gKick":"0",
+                    "throw":"0",
+                    "pen":"0"
+                    }   
+                },
+            {
+                "fname":"Thomas",
+                "lname":"Powell",
+                "email": "tpowell@ucsd.edu",
+                "dob":"10/11/1974",
+                "jerseynumber":"4",
+                "position":"defence",
+                "pic":"/",
+                "captain":"true",
+                "starter":"true",
+                "stats":{
+                    "assist":"0",
+                    "goal":"0",
+                    "shot":"0",
+                    "onGoal":"0",
+                    "foul":"0",
+                    "red":"0",
+                    "yellow":"0",
+                    "corner":"0",
+                    "gKick":"0",
+                    "throw":"0",
+                    "pen":"0"
+                }            
+            }
+        ],
+    
+        "schedule":[
+            {
+                "type": "practice",
+                "opponent": "N/A",
+                "time":"8:00 PT",
+                "date":"2017/11/15",
+                "location":"Home"
+            },
+            {
+                "type": "match",
+                "oponent": "UC Berkley",
+                "time":"20:00 PT",
+                "date":"2017/11/20",
+                "location":"Home",
+                "statsFor":{
+                    "goal":"0",
+                    "shot":"0",
+                    "onGoal":"0",
+                    "foul":"0",
+                    "red":"0",
+                    "yellow":"0",
+                    "corner":"0",
+                    "gKick":"0",
+                    "throw":"0",
+                    "pen":"0"
+                },
+                "statsAgainst":{
+                    "goal":"0",
+                    "shot":"0",
+                    "onGoal":"0",
+                    "foul":"0",
+                    "red":"0",
+                    "yellow":"0",
+                    "corner":"0",
+                    "gKick":"0",
+                    "throw":"0",
+                    "pen":"0"
+                }
+            },
+            {
+                "type": "practice",
+                "opponent": "N/A",
+                "time":"18:00 PT",
+                "date":"2017/11/23",
+                "location":"Home",
+                "result":"N/A"            
+            },
+            {
+                "type": "match",
+                "oponent": "N/A",
+                "time":"18:00 PT",
+                "date":"2017/11/23",
+                "location":"Away",
+                "statsFor":{
+                    "goal":"0",
+                    "shot":"0",
+                    "onGoal":"0",
+                    "foul":"0",
+                    "red":"0",
+                    "yellow":"0",
+                    "corner":"0",
+                    "gKick":"0",
+                    "throw":"0",
+                    "pen":"0"
+                },
+                "statsAgainst":{
+                    "goal":"0",
+                    "shot":"0",
+                    "onGoal":"0",
+                    "foul":"0",
+                    "red":"0",
+                    "yellow":"0",
+                    "corner":"0",
+                    "gKick":"0",
+                    "throw":"0",
+                    "pen":"0"
+                }
+            }
+        ]
+    }
+}

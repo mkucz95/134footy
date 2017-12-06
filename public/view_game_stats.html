@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="game_stats.css" />
+    <link type="text/css" rel="stylesheet" href="nav.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>View Game Stats</title>
+    <script type="text/javascript" src="logged_in.js"></script>
+</head>
+<body style="text-align:center">
+    <header id="topPage">
+        <h1>Team MBR</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="viewSchedule.html">Schedule</a>
+            <a href="viewSquad.html">Squad</a>
+        </nav>
+    </header>
+    <h4>MBR vs. <div id="opponentName" style="display:inline;">Enemies</div></h4>
+    <aside></aside>
+
+    <table class="goals">
+        <thead><tr><th>Goals</th></tr></thead>
+        <tbody><tr><td id="homegoal">3</td><td id="awaygoal">1</td></tr></tbody>
+    </table>
+
+    <table class="shots">
+        <thead><tr><th>Shots (on Goal)</th></tr></thead>
+        <tbody><tr><td id="homeshot">1(1)</div></td><td id="awayshot">1 (0)</div></td></tr></tbody>
+    </table>
+
+    <table class="fouls">
+        <thead><tr><th>Fouls</th></tr></thead>
+        <tbody><tr><td id="homefoul">1</td><td id="awayfoul">2</td></tr></tbody>
+    </table>
+
+    <table class="redcards">
+        <thead><tr><th>Red Cards</th></tr></thead>
+        <tbody><tr><td id="homered">0</td><td id="awayred">0</td></tr></tbody>
+    </table>
+
+    <table class="yellowcards">
+        <thead><tr><th>Yellow Cards</th></tr></thead>
+        <tbody><tr><td id="homeyellow">1</td><td id="awayyellow">1</td></tr></tbody>
+    </table>
+
+    <table class="corners">
+        <thead><tr><th>Corner Kicks</th></tr></thead>
+        <tbody><tr><td id="homecorner">2</td><td id="awaycorner">2</td></tr></tbody>
+    </table>
+
+    <table class="goalkicks">
+        <thead><tr><th>Goal Kicks</th></tr></thead>
+        <tbody><tr><td id="homegKick">2</td><td id="awaygKick">2</td></tr></tbody>
+    </table>
+
+    <table class="throwins">
+        <thead><tr><th>Throw Ins</th></tr></thead>
+        <tbody><tr><td id="homethrow">5</td><td id="awaythrow">5</td></tr></tbody>
+    </table>
+
+      <table class="penalties">
+            <thead><tr><th>Penalties</th></tr></thead>
+            <tbody><tr><td id="homepen">0</td><td id="awaypen">0</td></tr></tbody>
+        </table>
+
+    <button id="edit_stats" onclick="redirect()">Edit Stats</button>
+    <script type="text/javascript" src="stats.js"></script>
+</body>
+</html>
