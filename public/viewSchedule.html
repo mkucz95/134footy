@@ -23,76 +23,42 @@
                     line-height: 1.5;
                     border-radius: .25rem;
                     transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-                    text-transform: none;  }</style>
+                    text-transform: none;}
+                    .edit{
+                        color: blue;
+                    }
+                    .mainDesc{
+                        text-decoration: underline;
+                        color:black;
+                        font-size:1.2rem;
+                    }
+                    </style>
     </head>
-    <body>
+    <body style="margin:0 0.1rem 0.1rem 0.1rem;">
         <header id="topPage">
             <h1>Team MBR</h1>
-            <nav class="nav nav-pills nav-justified">
+            <nav>
                     <a href="index.html">Home</a>
                     <a href="#">Schedule</a>
                     <a href="viewSquad.html">Squad</a>
              </nav>
             </header>
 
-        <script>
-            function edit(id) {
-                localStorage.setItem('editGame', id);
-                window.location.href = 'editGame.html?i=' + id;
-            }
+            <table>
+                <thead>
+                    <tr><th class="mainDesc">Matches</th><th>Location</th><th>Opponent</th><th></th></tr>
+                </thead> 
+            <tbody id="matches"></tbody>
+            </table>
 
-            function view(id) {
-                localStorage.setItem('viewGame', id);
-                window.location.href = 'view_game_stats.html?i=' + id;
-            }
-
-            var teamSched = (JSON.parse(localStorage.getItem("team"))).schedule;
-            document.write("<table><thead><tr><th>Location</th> <th></th> <th>Opponent</th> <th></th> </tr></thead> <tbody>");
-            document.write("<tr><th>Matches</td> <td></td> <td></td> <td></td> </tr>");
-            if (teamSched) {
-                for (i = 0; i < teamSched.length; i++) {
-                    var details = teamSched[i];
-                    var gameAddr = details["address"];
-                    var gameDate = new Date(details["date"]);
-                    var gameTime = details["time"];
-                    var gameType = details["type"];
-                    var gameLoc = details["location"];
-                    var opponent = details["opponent"];
-
-                    if (gameType == "match") {
-                        document.write("<tr><td>" + gameLoc + " @ " + gameAddr + "</td> <td id='" + i + "' onclick='view(this.id)'>" + gameDate + " at " + gameTime + "</td> <td>" + opponent + "</td> <td id='" + i + "' onclick='edit(this.id)'><aside>edit</aside></td></tr>" );
-                    }  
-                }
-            }
-            else {
-                document.write("<tr><th>No scheduled matches.</th></tr>");
-            }
-
-            document.write("<tr><th>Practices</td> <td></td> <td></td> <td></td> </tr>");
-            if (teamSched) {
-                for (i = 0; i < teamSched.length; i++) {
-                    var details = teamSched[i];
-                    var gameAddr = details["address"];
-                    var gameDate = new Date(details["date"]);
-                    var gameTime = details["time"];
-                    var gameType = details["type"];
-                    var gameLoc = details["location"];
-                    var opponent = details["opponent"];
-
-                    if (gameType == "practice") {
-                        document.write("<tr><td>" + gameLoc + " @ " + gameAddr + "</td> <td>" + gameDate + " at " + gameTime + "</td> <td>" + opponent + "</td> <td id='" + i + "' onclick='edit(this.id)'><aside>edit</aside></td></tr>");
-                    }
-                }
-            }
-            else {
-                document.write("<tr><th>No scheduled practices.</th></tr>");
-            }
-            document.write("</tbody></table");
-
-        </script>
-
+            <table>
+                    <thead>
+                        <tr><th class="mainDesc">Practices</th><th>Location</th><th>Opponent</th><th></th></tr>
+                    </thead> 
+                <tbody id="practices"></tbody>
+          </table> 
         <br />
-        <button onclick="window.location.href='addgame.html'">Add Game</button>
-        
+        <button class="permission" onclick="window.location.href='addgame.html'">Add Game</button>
+        <script src="schedule.js"></script>
     </body>
 </html>

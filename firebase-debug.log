@@ -1,0 +1,28 @@
+[debug] [2017-12-06T00:41:06.140Z] ----------------------------------------------------------------------
+[debug] [2017-12-06T00:41:06.147Z] Command:       /usr/local/Cellar/node/7.4.0/bin/node /usr/local/bin/firebase serve
+[debug] [2017-12-06T00:41:06.148Z] CLI Version:   3.15.4
+[debug] [2017-12-06T00:41:06.148Z] Platform:      darwin
+[debug] [2017-12-06T00:41:06.149Z] Node Version:  v7.4.0
+[debug] [2017-12-06T00:41:06.150Z] Time:          Tue Dec 05 2017 16:41:06 GMT-0800 (PST)
+[debug] [2017-12-06T00:41:06.150Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-12-06T00:41:06.186Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-06T00:41:06.187Z] > authorizing via signed-in user
+[debug] [2017-12-06T00:41:06.193Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/footy-43ae4  
+ Tue Dec 05 2017 16:41:06 GMT-0800 (PST)
+[debug] [2017-12-06T00:41:06.737Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-06T00:41:06.741Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/footy-43ae4/tokens  
+ Tue Dec 05 2017 16:41:06 GMT-0800 (PST)
+[debug] [2017-12-06T00:41:07.135Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/Aleksandra/Desktop/footyapp'...
+[info] 
+[debug] [2017-12-06T00:41:07.147Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/footy-43ae4  
+ Tue Dec 05 2017 16:41:07 GMT-0800 (PST)
+[debug] [2017-12-06T00:41:07.802Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-06T00:41:07.804Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/937717767518/clients/_:getWebAppConfig  
+ Tue Dec 05 2017 16:41:07 GMT-0800 (PST)
+[debug] [2017-12-06T00:41:08.174Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+

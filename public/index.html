@@ -51,17 +51,16 @@
         function logout() {
             alert("Logging Out");
             localStorage.removeItem('logged_in');
+            window.location = "login.html";
         }
     </script>
     <title>Home Screen</title>
 </head>
-<body>
+<body style="margin:0 0.1rem 0.1rem 0.1rem;">
     <header id="topPage">
+        <button style="float:right;border-radius:2rem;" id="signout" onclick="logout()">Sign Out</button>            
         <h1>Team MBR</h1>
-        <form onsubmit="return logout()" action="login.html">
-            <button id="signout">Sign Out</button>
-        </form>
-        <nav class="nav nav-pills nav-justified">
+        <nav>
             <a href="#">Home</a>
             <a href="viewSchedule.html">Schedule</a>
             <a href="viewSquad.html">Squad</a>
@@ -77,9 +76,9 @@
             <th>Ties</th>
         </tr>
         <tr>
-            <td id="win">1</td>
-            <td id="loss">2</td>
-            <td id="tie">3</td>
+            <td id="win">Err</td>
+            <td id="loss">Err</td>
+            <td id="tie">Err</td>
         </tr>
         <tr>
             <th>Goals For</th>
@@ -87,18 +86,20 @@
             <th>Goals Against</th>
         </tr>
         <tr>
-            <td id="goalsFor">4</td>
+            <td id="goalsFor">err</td>
             <td></td>
-            <td id="goalsAgainst">5</td>
+            <td id="goalsAgainst">err</td>
         </tr>
     </table>
     <hr>
-    <h3>Next Game</h3>
-    <p>10/15 Sun 8:00PM</p>
-    <p>San Diego Petco Park</p>
-    <p>Team vs. Opponent</p>
+    <h3>Next Event: <span id="type">N/A</span></h3>
+    <div id="extraInfo">
+    <p><span id="date">date error</span> <span id="time">time error<span></p>
+    <p id="location">location error</p>
+    <p id="ownTeam">MBR vs. <span id="opponent">Opponent</span></p>
+    </div>
     <br/>
-    <button id="gamestats" onclick="window.location.href='view_game_stats.html'">Live Game Stats</button>
+    <button style="visibility:hidden;" id="gamestats" onclick="liveStats()">Live Game Stats</button>
 <script type="text/javascript" src="homeDisplay.js">
 </script>
 </body>

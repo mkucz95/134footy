@@ -85,6 +85,7 @@ var team = {
             "location":"home",
             "statsFor":{
                 'goal':0,
+                'assist':0,
                 'shot':0,
                 'onGoal':0,
                 'foul':0,
@@ -97,6 +98,7 @@ var team = {
             },
             "statsAgainst":{
                 'goal':0,
+                'assist':0,                
                 'shot':0,
                 'onGoal':0,
                 'foul':0,
@@ -124,6 +126,7 @@ var team = {
             "location":"away",
             "statsFor":{
                 'goal':0,
+                'assist':0,                
                 'shot':0,
                 'onGoal':0,
                 'foul':0,
@@ -136,6 +139,7 @@ var team = {
             },
             "statsAgainst":{
                 'goal':0,
+                'assist':0,                
                 'shot':0,
                 'onGoal':0,
                 'foul':0,
@@ -148,12 +152,13 @@ var team = {
             } },
         {
             "type": "match",
-            "opponent": "N/A",
+            "opponent": "Liverpool FC",
             "time":"18:00",
             "date":"2017-11-30",
             "location":"away",
             "statsFor":{
                 'goal':0,
+                'assist':0,                
                 'shot':0,
                 'onGoal':0,
                 'foul':0,
@@ -166,6 +171,7 @@ var team = {
             },
             "statsAgainst":{
                 'goal':0,
+                'assist':0,                
                 'shot':0,
                 'onGoal':0,
                 'foul':0,
@@ -175,7 +181,15 @@ var team = {
                 'gKick':0,
                 'throw':0,
                 'pen':0
-            } }
+            } 
+        },
+        {
+            "type": "practice",
+            "opponent": "N/A",
+            "time":"16:00",
+            "date":"2017-12-30",
+            "location":"home"
+        },
     ]
 };
 

@@ -43,13 +43,15 @@ function save(element){
     let data ={'number':0,'stat':0,'team':0,'action':0};
 
     ['number', 'stat', 'team', 'action'].forEach(property => {
-        console.log(document.querySelector("#form-number"));
-        document.querySelector("#form-number").value = data[property];
+        let selector = "#form-"+property;
+        console.log(document.querySelector(selector));
+        data[property] = document.querySelector(selector).value;
     });
 
     console.log(data);
     associateToPlayer(data);
     associateToTeam(data);
+    refresh(data['stat'], data['team']);
 }
 
 function getCurrDate(){
@@ -61,19 +63,19 @@ function getCurrDate(){
 }
 
     function updateFormPlayers(){
+        console.log("updatePlayers");
         var team = JSON.parse(localStorage.getItem("team"));
-        const sel = document.getElementsByName("form-number");
+        const sel = document.querySelector("#form-number");
 
-             for(var j=0; j<sel.length; j++){
              team.players.forEach(function(player){
-                var option = document.createElement("option");
-                
+                console.log(player);
+                let option = document.createElement("option");
                 option.text = player.lname +'-'+player.jerseynumber;
                 option.value = player.jerseynumber;
-                sel[j].add(option);
+                console.log(option.text);
+                sel.insertAdjacentHTML('afterbegin', option);
              });
         }
-    }
 
 function associateToPlayer(data){
     let type=data['stat'];
@@ -91,9 +93,15 @@ function associateToPlayer(data){
  }
 
  function associateToTeam(data){
-         if(team.schedule[id].type === "match" && team.schedule[id].date == todayDate){
-             if(data['team'] ==="home") team.schedule[id].statsFor[data['stat']] += data['action'];
-             else team.schedule[id].statsAgainst[data['stat']] += data['action'];
+     let action;
+     if(data['action'] === "add") action = 1;
+     else action=-1;
+
+     /*needed for full functionality TODO*/
+         //if(team.schedule[id].type === "match" && team.schedule[id].date == todayDate){
+     if(team.schedule[id].type === "match"){
+            if(data['team'] ==="home") team.schedule[id].statsFor[data['stat']] += action;
+             else team.schedule[id].statsAgainst[data['stat']] += action;
          }
  
          console.log(team.schedule[id]);
@@ -105,47 +113,35 @@ function associateToPlayer(data){
         var opposition = team.schedule[id].opponent;
         console.log(opposition);
         console.log(document.getElementsByClassName("opponentName"));
-        console.log(document.getElementById("opponentOption"));
+        let el = document.getElementsByClassName("opponentName");
+        el[0].innerHTML = opposition;
+        el[1].innerHTML = opposition;
 
-        (document.getElementsByClassName("opponentName")).innerHTML = opposition;
-        (document.getElementById("opponentOption")).innerHTML = opposition;
-
-        var el = document.getElementsByTagName("aside")[0];
-        el.innerHTML = match.date;
+        let dateEL = document.getElementsByTagName("aside")[0];
+        dateEL.innerHTML = match.date;
     }
 
         function refreshAll(){
             console.log("refreshAll");
-            ["goal", "shot", "onGoal", "foul", "red", "yellow", "corner", "gKick", "throw", "pen"].forEach(function(stat){
+            ["goal", "assist", "shot", "onGoal", "foul", "red", "yellow", "corner", "gKick", "throw", "pen"].forEach(function(stat){
                 console.log(stat);                
                 refresh(stat, "home");
                 refresh(stat, "away");
             });
         }
 
-        function refresh(stat, teamName){
-            var team = JSON.parse(localStorage.getItem("team"));            
-            var match = team.schedule[id];
+        function refresh(stat, teamType){
+            let teamObj = JSON.parse(localStorage.getItem("team"));            
+            var match = teamObj.schedule[id];
 
-            let selector = "#"+teamName+stat;
+            let selector = "#"+teamType+stat;
             let el = document.querySelector(selector);
-            
-            console.log(el);
 
             let value;
-            if(team === "home") value = match.statsFor[stat];
-            else value = match.statsAgainst[stat]
+            if(teamType === "home"){ 
+                value = match.statsFor[stat];
+            }
+            else value = match.statsAgainst[stat];
 
-            if(el !=null){
-                    if(el.id.includes("shot")){
-                        el.innerHTML = value +' ('+match.statsFor.onGoal+')';
-                    }
-                    else{
-                        el.innerHTML = value;  
-                    }
-                }
+            el.innerHTML = value;
         }
-
-    function redirect(){
-        window.location = 'edit_game_stats.html?i='+id;
-    }

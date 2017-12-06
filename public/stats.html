@@ -12,27 +12,32 @@
     <script type="text/javascript" src="logged_in.js"></script>
 </head>
 
-<body style="text-align:center">
+<body style="text-align:center;margin-top:0;">
     <header id="topPage">
         <h1>Team MBR</h1>
         <nav>
-            <a href="homepage.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="viewSchedule.html">Schedule</a>
             <a href="viewSquad.html">Squad</a>
         </nav>
     </header>
-    <h4>MBR vs.<em class="opponentName" style="display:inline;">Enemies</em></h4>
+    <h4>MBR vs.<span class="opponentName" style="display:inline;">Enemies</span></h4>
     <aside>-</aside>
-    <button class="editStat" onclick='openEdit("dataInput")'>Enter Stat</button>
+    <button style="color:red;border:1px solid red;margin-top:0.5rem;"class="editStat permission" onclick='openEdit("dataInput")'>Enter Stat</button>
 
         <table>
             <thead><tr><th> Goals</th></tr></thead>
             <tbody><tr><td id="homegoal">0</td><td id="awaygoal">0</td></tr></tbody>
         </table>
+
+        <table>
+            <thead><tr><th>Assists</th></tr><thead>
+            <tbody><tr><td id="homeassist">0</td><td id="awayassist">0</td></tr></tbody>
+        </table>
        
              <table>
-                <thead><tr><th>Shots</th></tr></thead>
-                <tbody><tr><td id="homeshot">0(0)</td><td id="awayshot">0(0)</td></tr></tbody>
+                <thead><tr><th>Shots: Total | on Target</th></tr><thead>
+                <tbody><tr><td><span id="homeshot">0</span> | <span id="homeonGoal">0</span></td><td><span id="awayshot">0</span> | <span id="awayonGoal">0</span></td></tr></tbody>
             </table>
 
                <table class="fouls">
@@ -70,8 +75,8 @@
                     <tbody><tr><td id="homepen">0</td><td id="awaypen">0</td></tr></tbody>
             </table>
 
-                <div id="dataInput" style="visibility:hidden;">
-                    <label>Choose Statistic:
+                <div id="dataInput" style="visibility:hidden;display:grid;border:1px solid red;border-radius:2px; padding:0.3rem;">
+                    <label>Choose Statistic:</label> 
                     <select id="form-stat" name="stat" required>
                         <option value="" disabled>Choose Stat</option>
                         <option value="goal">Goal</option>
@@ -84,22 +89,23 @@
                         <option value="gKick">Goal Kick</option>
                         <option value="throw">Throw In</option>
                         <option value="pen">Penalty</option>
-                    </select></label>     
+                        <option value="assist">Assist</option>                        
+                    </select>    
                     
-                    <label>Choose Team                          
-                        <select id="form-team" name="team" required><option value="" disabled>Choose</option><option value="homeTeam">Home Team</option><option value="awayTeam" id="opponentOption">Opponent</option></select>
-                    </label>                                    
+                    <label>Choose Team:</label>                        
+                        <select id="form-team" name="team" required><option value="" disabled>Choose</option><option value="home">Home Team</option><option value="away" class="opponentName">Opponent</option></select>
+                                                    
                     
-                    <label>Assign to Player
-                        <select id="form-number" name="number" class="playerSelect" required><option disabled value="">Choose</option><option value="-1">no player</option></select>
-                    </label>
+                    <label>Assign to Player:</label>
+                        <select id="form-number" name="number" class="playerSelect"><option disabled value="">Choose</option><option value="-1">no player</option></select>
+                    
 
-                    <label>Action
+                    <label>Action:</label>
                         <select id="form-action" name="action" required><option disabled value="">Choose</option><option value="add">+</option><option value="minus">-</option></select>
-                    </label>
+                    
                    
-                    <button class="editStat" id="cancel" onclick="closeEdit('dataInput')">Cancel</button>
-                    <button class="editStat" id="saveStat" onclick="save()">Save</button>     
+                    <button id="cancel" onclick="closeEdit('dataInput')">Cancel</button>
+                    <button id="saveStat" onclick="save()">Save</button>     
                  </div>            
                  <script src="stats.js"></script>
         </body>
