@@ -7,29 +7,11 @@
             <link type="text/css" rel="stylesheet" href="nav.css">  
             <link type="text/css" rel="stylesheet" href="table.css">            
             <title>View Player</title>
-    <script type="text/javascript" src="logged_in.js"></script>
+    <script src="logged_in.js"></script>
+    <script src="permission.js"></script>    
 
     <script>
-        function var1() {
-            var team = JSON.parse(localStorage.getItem("team"));
-            var view = localStorage.getItem("viewplayer");
-            var edit = team.players[view];
-            document.getElementById("position").innerHTML = edit.position;
-            document.getElementById("jerseynum").innerHTML = edit.jerseynumber;
-            document.getElementById("dob").innerHTML = edit.dob;
-            document.getElementById("playername").innerHTML = edit.fname + " " + edit.lname;
-
-
-            document.getElementById("goals").innerHTML = edit.stats["goal"];
-            document.getElementById("shots").innerHTML = edit.stats["shot"];
-            document.getElementById("fouls").innerHTML = edit.stats["foul"];
-            document.getElementById("redcards").innerHTML = edit.stats["red"];
-            document.getElementById("yellowcards").innerHTML = edit.stats["yellow"];
-            document.getElementById("corner").innerHTML = edit.stats["corner"];
-            document.getElementById("goalkick").innerHTML = edit.stats["gKick"];
-            document.getElementById("throw").innerHTML = edit.stats["throw"];
-            document.getElementById("penalty").innerHTML = edit.stats["pen"];
-
+        
 
 
 
@@ -84,22 +66,19 @@
         <table>
             <thead><tr><th>Player Season Statistics</th><th></th></tr></thead>
             <tbody>
-                    <tr><td>Goals</td><td id="goals">3</td></tr>
-                    <!---<tr><td>Assists</td><td id="assists">6</td></tr>
-                    <tr><td>Games Played</td><td id="games">6</td></tr>-->
-                <tr><td>Shots on Goal</td><td id="shots">15</td></tr>
-                    <tr><td>Fouls</td><td id="fouls">5</td></tr>
-                    <tr><td>Red Cards</td><td id="redcards">1</td></tr>
-                    <tr><td>Yellow Cards</td><td id="yellowcards">2</td></tr>
-                <tr><td>Corner Kicks</td><td id="corner">15</td></tr>
-                <tr><td>Goal Kicks</td><td id="goalkick">1</td></tr>
-                <tr><td>Throw Ins</td><td id="throw">7</td></tr>
-                <tr><td>Penalty Kicks</td><td id="penalty">2</td></tr>
-                    <!---<tr><td>Goals Scored</td><td id="scored">1</td></tr>
-                    <tr><td>Penalty Kicks</td><td id="penalty">0</td></tr>
-                    <tr><td>Appearances</td><td id="appearances">5</td></tr>
-                    <tr><td>Throw Ins</td><td id="throw">7</td></tr>-->
+                <tr><td>Goals</td><td id="goals">err</td></tr>
+                <tr><td>Assists</td><td id="assists">err</td></tr>
+                <!---<tr><td>Games Played</td><td id="games">6</td></tr>-->
+                <tr><td>Shots on Goal</td><td id="shots">err</td></tr>
+                <tr><td>Fouls</td><td id="fouls">err</td></tr>
+                <tr><td>Red Cards</td><td id="redcards">err</td></tr>
+                <tr><td>Yellow Cards</td><td id="yellowcards">err</td></tr>
+                <tr><td>Corner Kicks</td><td id="corner">err</td></tr>
+                <tr><td>Goal Kicks</td><td id="goalkick">err</td></tr>
+                <tr><td>Throw Ins</td><td id="throw">err</td></tr>
+                <tr><td>Penalty Kicks</td><td id="penalty">err</td></tr>
             </tbody>
         </table>
+        <script src="player.js"></script>            
     </body>
 </html>
