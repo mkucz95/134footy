@@ -47,7 +47,7 @@ var team = {
             "fname":"Thomas",
             "lname":"Powell",
             "email": "tpowell@ucsd.edu",
-            "dob":"1974-10-11   ",
+            "dob":"1974-10-11",
             "jerseynumber":"4",
             "position":"defence",
             "pic":"/",
@@ -75,7 +75,8 @@ var team = {
             "opponent": "N/A",
             "time":"16:00",
             "date":"2017-11-15",
-            "location":"home"
+            "location":"home",
+            "address":"9500 Gilman Dr, La Jolla 92037"            
         },
         {
             "type": "match",
@@ -83,6 +84,7 @@ var team = {
             "time":"20:00",
             "date":"2017-11-16",
             "location":"home",
+            "address":"9500 Gilman Dr, La Jolla 92037",            
             "statsFor":{
                 'goal':0,
                 'assist':0,
@@ -116,7 +118,8 @@ var team = {
             "time":"18:00",
             "date":"2017-11-17",
             "location":"home",
-            "result":"N/A"            
+            "result":"N/A",
+            "address":"9500 Gilman Dr, La Jolla 92037"         
         },
         {
             "type": "match",
@@ -124,6 +127,7 @@ var team = {
             "time":"18:00",
             "date":"2017-11-23",
             "location":"away",
+            "address":"Hornsey Rd, London, UK",            
             "statsFor":{
                 'goal':0,
                 'assist':0,                
@@ -156,6 +160,7 @@ var team = {
             "time":"18:00",
             "date":"2017-11-30",
             "location":"away",
+            "address":"Anfield Rd, Liverpool, UK",
             "statsFor":{
                 'goal':0,
                 'assist':0,                
@@ -188,7 +193,8 @@ var team = {
             "opponent": "N/A",
             "time":"16:00",
             "date":"2017-12-30",
-            "location":"home"
+            "location":"home",
+            "address":"9500 Gilman Dr, La Jolla 92037"
         },
     ]
 };

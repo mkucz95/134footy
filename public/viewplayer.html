@@ -9,41 +9,6 @@
             <title>View Player</title>
     <script src="logged_in.js"></script>
     <script src="permission.js"></script>    
-
-    <script>
-        
-
-
-
-           /* document.getElementById("assists").innerHTML = edit.stats[1];
-            document.getElementById("games").innerHTML = edit.stats[2];
-
-
-            document.getElementById("scored").innerHTML = edit.stats[7];
-
-            document.getElementById("appearances").innerHTML = edit.stats[9];*/
-            
-           
-
-
-
-            /*if (localStorage.getItem("players")) {
-                var player = JSON.parse(localStorage.getItem("players"));
-                var view = localStorage.getItem("viewplayer");
-                var edit = JSON.parse(localStorage.getItem(player[view]));
-                document.getElementById("position").innerHTML = edit[4];
-                document.getElementById("jerseynum").innerHTML = edit[3];   
-                document.getElementById("dob").innerHTML = edit[2];
-                document.getElementById("playername").innerHTML = player[view];
-                if (edit[0]) {
-                    document.getElementById("profilePic").src = edit[0];
-                }
-            }*/
-        }
-        window.onload = var1;
-
-
-    </script>
     </head>
     <body style="margin:0 0.1rem 0.1rem 0.1rem;">
         <header id="topPage">
@@ -54,29 +19,30 @@
              </nav>
         </header>
                         <img id="profilePic" src="soccer_ball.png" alt="Player Image" style="max-width:10%;">
-                            <h2 id="playername">John Smith</h2>
+                            <h2><span id="fname">Err</span> <span id="lname">Err</span></h2>
                             <button onclick="window.location.href='editplayer.html'">Edit</button>
 
         <table>
             <tr><td>Position</td> <td id="position">Midfield</td></tr>
-            <tr><td>Jersey #</td><td id="jerseynum">10</td></tr>
+            <tr><td>Jersey #</td><td id="jerseynumber">10</td></tr>
             <tr><td>Date of Birth</td><td id="dob">11/05/2017</td></tr>      
         </table>
 
         <table>
             <thead><tr><th>Player Season Statistics</th><th></th></tr></thead>
             <tbody>
-                <tr><td>Goals</td><td id="goals">err</td></tr>
-                <tr><td>Assists</td><td id="assists">err</td></tr>
-                <!---<tr><td>Games Played</td><td id="games">6</td></tr>-->
-                <tr><td>Shots on Goal</td><td id="shots">err</td></tr>
-                <tr><td>Fouls</td><td id="fouls">err</td></tr>
-                <tr><td>Red Cards</td><td id="redcards">err</td></tr>
-                <tr><td>Yellow Cards</td><td id="yellowcards">err</td></tr>
+                <tr><td>Goals</td><td id="goal">err</td></tr>
+                <tr><td>Assists</td><td id="assist">err</td></tr>
+                <!--<tr><td>Games Played</td><td id="games">6</td></tr> todo-->
+                <tr><td>Shots on Target</td><td id="onGoal">err</td></tr>
+                <tr><td>Shots off Target</td><td id="shot">err</td></tr>                
+                <tr><td>Fouls</td><td id="foul">err</td></tr>
+                <tr><td>Red Cards</td><td id="red">err</td></tr>
+                <tr><td>Yellow Cards</td><td id="yellow">err</td></tr>
                 <tr><td>Corner Kicks</td><td id="corner">err</td></tr>
-                <tr><td>Goal Kicks</td><td id="goalkick">err</td></tr>
+                <tr><td>Goal Kicks</td><td id="gKick">err</td></tr>
                 <tr><td>Throw Ins</td><td id="throw">err</td></tr>
-                <tr><td>Penalty Kicks</td><td id="penalty">err</td></tr>
+                <tr><td>Penalty Kicks</td><td id="pen">err</td></tr>
             </tbody>
         </table>
         <script src="player.js"></script>            
