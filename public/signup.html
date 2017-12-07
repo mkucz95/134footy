@@ -11,31 +11,16 @@
     
         function printError(text, location, type){
             console.log("error()");
-
             if(sessionStorage.getItem(type) === "0"){
                 var notification = document.createElement("em");
                 var emNode = document.createTextNode(text);
                 notification.className = "errorMsg";
-
                 notification.appendChild(emNode);
                 var insertDest = document.getElementById(location).previousSibling;
-
                 insertDest.appendChild(notification);
                 insertDest.nextSibling.style = "border:1px red solid;";
-
                 sessionStorage.setItem(type, "1");
             }
-
-        /* console.log(document.getElementById(location).previousSibling.childNodes);
-        var children = document.getElementById(location).previousSibling.childNodes;
-        var msgExists = false;
-
-       for(var i = 0;i<children.length-1;i++){
-            if(children[i].className == "errorMsg"){
-                msgExists = true;
-                break;
-            }
-        } */
        }
 
         function validate(){
@@ -103,7 +88,6 @@
             console.log("saved user");
         }
         </script>
-
         <style>
             em{margin-left:2rem; color:red; font-style:normal;font-weight:bold;}
         </style>
@@ -112,7 +96,6 @@
         <header>
             <h1>Sign Up</h1>
         </header>
-
         <form method="post" name="signup" action="index.html" onsubmit="return validate()">
             <label class="info" for="username">Username (email):</label><input name="email" type="email" id="username" required> <br>
             <label class="info" for="fname">First Name:</label><input name="fname" type="text" id="fname" required><br>
@@ -126,6 +109,5 @@
             <br><input type="radio" name="who" id="coach" value="coach"><label class="info2" for="coach">Coach</label> 
             <br><button type="submit">Submit</button>
         </form>
-
     </body>
 </html>

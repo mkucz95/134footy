@@ -9,27 +9,7 @@
             <title>Add Player</title>
         <script type="text/javascript" src="permission.js"></script>
         <script type="text/javascript" src="logged_in.js"></script>
-
-        <script>
-            function add() {
-                var team = JSON.parse(localStorage.getItem("team"));
-                var edit = {};
-
-                ["fname", "lname", "profileImg", "email", "dob", "jerseynumber", "position"].forEach(function(data){
-                    edit[data] = document.forms["newPlayer"][data].value;
-                });
-
-                var imag = img.replace(/^.*[\\\/]/, '');
-                var captain = (document.forms["newPlayer"]["captain"].checked).toString();
-                edit["pic"] = imag;
-                edit["captain"] = captain;
-                edit["starter"] = "false";
-                edit["stats"] = {'assist': 0,'goal': 0,'shot': 0,'onGoal': 0,'foul': 0,'red': 0,'yellow': 0,'corner': 0,'gKick': 0,'throw': 0,'pen': 0}
-                team.players.push(edit);
-                localStorage.setItem("team", JSON.stringify(team));
-                }
-        </script>
-        
+        <script src="addPlayer.js"></script>
     </head>
     <body style="margin:0 0.1rem 0.1rem 0.1rem;">
             <header id="topPage">
@@ -40,10 +20,8 @@
                             <a href="viewSquad.html">Squad</a>
                         </nav>
                     </header>
-
         <img class="media" id="chosenPic" src="" alt="upload image" style="max-width:10%;">
         <h2 class="media">Add Player</h2>
-        
         <form method="post" name="newPlayer" action="viewSquad.html" onsubmit="return add()">
             <input type="file" name="profileImg" accept="image/*" onchange=""><br>                
             <label for="fname">First Name:</label> 
@@ -62,6 +40,5 @@
             <input name="captain" id="captain" type="checkbox" value="yes"><br>
             <input type="submit" value="Add Player">
         </form>
-
     </body>
 </html>

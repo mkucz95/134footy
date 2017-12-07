@@ -2,9 +2,8 @@ h1 {
     color: rgb(0,110,255);
     text-align: center;
     padding-top: 0.5rem;
-    margin-bottom: 0.2rem;
+    margin: 0.5rem 0.5rem;
     font-size: 1.7rem;
-
     font-family: inherit;
     font-weight: 500;
     line-height: 1.2;
@@ -73,16 +72,5 @@ a[href="#"]{
     color: #fff;
     cursor: default;
     background-color: #0275d8;
-}
-
-header {
-    margin-bottom: 1rem;
-}
-#topPage{
-    border-width: 0.3rem 0 0.3rem 0;
-    border-style: solid;
-    border-top-color:gray;   
-    border-bottom-color: rgb(0,110,255);
-    border-radius: 0.1rem;
 }
 

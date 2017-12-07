@@ -1,15 +1,12 @@
 buildHtml();
-
 function edit(id) {
     localStorage.setItem('editGame', id);
     window.location.href = 'editGame.html?i=' + id;
 }
-
 function view(id) {
     localStorage.setItem('viewGame', id);
     window.location.href = 'stats.html?i=' + id;
 }
-
 function buildHtml(){
     const matchErr = '<tr><td>No scheduled matches.</td></tr>';
     const practiceErr = '<tr><td>No scheduled practices.</td></tr>';
@@ -30,10 +27,12 @@ function buildHtml(){
          });
     }
 
-    if(document.getElementById("matches").childElementCount<1){
+    var matches = document.getElementById("matches");
+    if(matches.childElementCount<1){
         matches.innerHTML = matchErr;
     }
-    if(document.getElementById("practices").childElementCount<1){
+    var practices=document.getElementById("practices");
+    if(practices.childElementCount<1){
         practices.innerHTML = practiceErr;        
     }
 }

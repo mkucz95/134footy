@@ -22,26 +22,20 @@ body{
     display: flex;
     align-items: flex-start;    
 }
-
 .media h2{
     flex: 1;
 }
-
 button, input{
     overflow: visible;
         font-family: inherit;
     font-size: inherit;
     line-height: inherit;    
     -webkit-rtl-ordering: logical;
-    cursor: auto;
-    
+    cursor: auto;   
 }
-
-
-
 form>input{
     display: block;
-    width: 100%;
+    width: 80%;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -53,9 +47,7 @@ form>input{
     border-radius: .25rem;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     margin-bottom: 1rem;
-    
 }
-
 button{
     display: block;
     width: 100%;

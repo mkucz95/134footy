@@ -11,156 +11,7 @@
     <script type="text/javascript" src="logged_in.js"></script>
     </head>
     <body style="margin:0 0.1rem 0.1rem 0.1rem;">
-        <script>
-            /*if (!localStorage.getItem('logged_in')) {
-                alert('Not Logged In');
-                window.location = "login.html";
-            }
-            else if (localStorage.getItem('permission') == 'false') {
-                alert('Cannot access page');
-                window.location = "index.html"
-            }*/
-
-            function var1() {
-
-                var team = JSON.parse(localStorage.getItem("team"));
-                var view = localStorage.getItem("viewplayer");
-                var edit = team.players[view];
-                
-                document.getElementById("name").innerHTML = edit.fname + " " + edit.lname;
-                document.getElementById("fname").value = edit.fname;
-                document.getElementById("lname").value = edit.lname;
-                document.getElementById("playerEmail").value = edit.email;
-                document.getElementById("dob").value = edit.dob;
-                document.getElementById("jersey").value = edit.jerseynumber;
-                document.getElementById("position").value = edit.position;
-                document.getElementById("captain").checked = (edit.captain == 'true');
-                document.getElementById("starter").checked = (edit.starter == 'true');
-
-                /*if (localStorage.getItem("players")) {
-                    var player = JSON.parse(localStorage.getItem("players"));
-                    var view = localStorage.getItem("viewplayer");
-                    for (i = 0; i < player.length; i++) {
-                        if (i == view) {
-                            var edit = JSON.parse(localStorage.getItem(player[i]));
-
-                            var name = player[i].split(" ");
-                            document.getElementById("name").innerHTML = player[i];
-                            document.getElementById("fname").value = name[0];
-                            document.getElementById("lname").value = name[1];
-                            document.getElementById("playerEmail").value = edit[1];
-                            document.getElementById("dob").value = edit[2];
-                            document.getElementById("jersey").value = edit[3];
-                            document.getElementById("position").value = edit[4];
-                            document.getElementById("captain").checked = edit[5];
-                            document.getElementById("starter").checked = edit[6];
-                            if (edit[0]) {
-                                document.getElementById("profilePic").src = edit[0];
-                            }
-                        }
-                    }
-                }*/
-            }
-            window.onload = var1;
-
-            //need to handle changing name by removing player name and replacing with new player name
-            function change() {
-
-                var fname = document.forms["editPlayer"]["fname"].value;
-                var lname = document.forms["editPlayer"]["lname"].value;
-
-                var team = JSON.parse(localStorage.getItem("team"));
-                var view = localStorage.getItem("viewplayer");
-                var temp = team.players[view];
-
-
-                var edit = {};
-                var img = document.forms["editPlayer"]["profileImg"].value;
-                var imag = img.replace(/^.*[\\\/]/, '');
-                var email = document.forms["editPlayer"]["email"].value;
-                var dob = document.forms["editPlayer"]["dob"].value;
-                var jnum = document.forms["editPlayer"]["jerseynumber"].value;
-                var position = document.forms["editPlayer"]["position"].value;
-                var captain = document.forms["editPlayer"]["captain"].checked.toString();
-                var starter = document.forms["editPlayer"]["starter"].checked.toString();
-
-                edit["fname"] = fname;
-                edit["lname"] = lname;
-                edit["email"] = email;
-                edit["dob"] = dob;
-                edit["jerseynumber"] = jnum;
-                edit["position"] = position;
-                edit["pic"] = imag;
-                edit["captain"] = captain;
-                edit["starter"] = starter;
-                edit["stats"] = temp.stats;
-
-                team.players.splice(view, 1);
-                team.players.push(edit);
-                localStorage.setItem("team", JSON.stringify(team));
-
-
-                /*var fname = document.forms["editPlayer"]["fname"].value;
-                var lname = document.forms["editPlayer"]["lname"].value;
-                var player = JSON.parse(localStorage.getItem("players"));
-                var view = localStorage.getItem("viewplayer");
-                var oldname = player[view];
-                player[view] = fname + " " + lname;
-                localStorage.removeItem(oldname);
-                localStorage.setItem("players", JSON.stringify(player));
-
-
-
-                var edit = [];
-                var img = document.forms["editPlayer"]["profileImg"].value;
-                var imag = img.replace(/^.*[\\\/]/, '');
-                var email = document.forms["editPlayer"]["email"].value;
-                var dob = document.forms["editPlayer"]["dob"].value;
-                var jnum = document.forms["editPlayer"]["jerseynumber"].value;
-                var position = document.forms["editPlayer"]["position"].value;
-                var captain = document.forms["editPlayer"]["captain"].checked;
-                var starter = document.forms["editPlayer"]["starter"].checked;
-
-
-                    edit.push(imag);
-                    edit.push(email);
-                    edit.push(dob);
-                    edit.push(jnum);
-                    edit.push(position);
-                    edit.push(captain);
-                    edit.push(starter);
-                    localStorage.setItem(fname + " " + lname, JSON.stringify(edit));
-                */
-            }
-            function delplayer() {
-                if (confirm("ARE YOU SURE YOU WANT TO DELETE THIS PLAYER?") == true) {
-                    alert("Player has been deleted");
-
-                    var team = JSON.parse(localStorage.getItem("team"));
-                    var view = localStorage.getItem("viewplayer");
-                    var temp = team.players[view];
-                    team.players.splice(view, 1);
-                    localStorage.setItem("team", JSON.stringify(team));
-                    /*if (localStorage.getItem("players")) {
-                        var player = JSON.parse(localStorage.getItem("players"));
-                        var view = localStorage.getItem("viewplayer");
-                        localStorage.removeItem(player[view])
-                        for (i = 0; i < player.length; i++) {
-                            if (player[view] = player[i]) {
-                                player.splice(i, 1);
-                                localStorage.setItem("players", JSON.stringify(player));
-                            }
-                        }
-                        
-                    }*/
-                    return true;
-                } else {
-                    alert("Cancelled");
-                    return false;
-                }
-            }
-        </script>
-
+        <script src="editPlayer.js"></script>
         <header id="topPage">
             <h1>Team MBR</h1>
             <nav>
@@ -169,44 +20,29 @@
                     <a href="viewSquad.html">Squad</a>
              </nav>
         </header>
-
                         <img id="profilePic" src="soccer_ball.png" alt="Player Image" style="max-width:10%;">
-                        <h2 id="name">John Smith</h2>
-
         <form method="POST" name="editPlayer" action="viewSquad.html" onsubmit="return change()">
-                <input type="file" name="profileImg" accept="image/*" onchange=""><br>
-
+                <input type="file" name="profileImg" accept="image/*" onchange="">
             <label for="starter">Starter:</label>
             <input name="starter" id="starter" type="checkbox" />
-
-                
             <label for="fname">First Name:</label>
-            <input name="fname" class="form-control" type="text" id="fname" placeholder="John" value="John" required><br>
-            
-
+            <input name="fname" class="form-control" type="text" id="fname" placeholder="John" value="John" required>
             <label for="lname">Last Name</label>
-            <input name="lname" type="text" id="lname" placeholder="Smith" value="Smith" required><br>
-            
+            <input name="lname" type="text" id="lname" placeholder="Smith" value="Smith" required>
                 <label for="playerEmail">Email</label>
-            <input name="email" type="email" id="playerEmail" placeholder="user@email.com" value="user@email.com" required><br>
-            
+            <input name="email" type="email" id="email" placeholder="user@email.com" value="user@email.com" required>
                 <label for="dob">Date of Birth</label>
-            <input name="dob" type="date" id="dob" value="1993-11-05" required><br>
-            
-                <label for="jersey">Jersey Number</label>
-            <input name="jerseynumber" type="number" id="jersey" min="0" max="99" placeholder="10" value="10" required><br>
-            
-         
+            <input name="dob" type="date" id="dob" value="1993-11-05" required>
+                <label for="jerseynumber">Jersey Number</label>
+            <input name="jerseynumber" type="number" id="jerseynumber" min="0" max="99" placeholder="10" value="10" required>
                 <label for="position">Position</label>
-            <input name="position" type="text" id="position" maxlength="20" placeholder="Midfield" value="Midfield"><br>
-      
+            <input name="position" type="text" id="position" maxlength="20" placeholder="Midfield" value="Midfield">
                 <label for="captain">Captain:</label>
-            <input  name="captain" id="captain" type="checkbox"><br>        
+            <input  name="captain" id="captain" type="checkbox">        
             <button type="submit" >Save Player</button>            
         </form>
-
-        <form name="deletePlayer" method="POST" action="viewSquad.html" onsubmit="return delplayer()">
-            <button style="color:red; border-color:red;" type="submit" value="delete" >Delete Player</button>
-       </form>
+            <button style="color:red; border-color:red;" onclick="confirmDelete()">Delete Player</button>
+            <button id="confirmButton" style="color:red;visibility:hidden;border-color:red;font-size:1rem;" onclick="delplayer()">Confirm Deletion</button>
+            <form name="deletePlayer" method="POST" action="viewSquad.html" style="display:none;"><input type="text" value="delete"></form>
     </body>
 </html>

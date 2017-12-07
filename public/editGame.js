@@ -41,7 +41,6 @@ function saveEvent(){
     }else{
         fields.type = "practice";
     }
-
     localStorage.setItem("team", JSON.stringify(team));
 }
 
