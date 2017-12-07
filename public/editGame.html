@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
@@ -7,122 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link type="text/css" rel="stylesheet" href="form.css">  
     <link type="text/css" rel="stylesheet" href="nav.css">
-    <script type="text/javascript" src="permission.js"></script>
-    <script type="text/javascript" src="logged_in.js"></script>
-
-    <script>
-        /*
-        Want to get the game's current data and display it on the page for user
-        to edit, then update the fields necessary.
-        */
-        function loadFields() {
-
-            var team = JSON.parse(localStorage.getItem("team"));
-            var gameId = localStorage.getItem("editGame");
-            var fields = team.schedule[gameId];
-
-
-            var curOpponent = fields["opponent"];
-            var curDate = fields["date"];
-            var curTime = fields["time"];
-            var curAddr = fields["address"];
-            var curLoc = fields["location"];
-            var curType = fields["type"];
-            //var curStatsFor = fields.statsFor;
-            //var curStatsAgainst = fields.statsAgainst;
-
-
-            document.getElementById("opponent").value = curOpponent;
-            document.getElementById("date").value = curDate;
-            document.getElementById("time").value = curTime;
-            document.getElementById("location").value = curAddr;
-
-            if (curLoc == "home") {
-                document.getElementById("home").checked = true;
-            }
-            if (curLoc == "away") {
-                document.getElementById("away").checked = true;
-            }
-
-            if (curType == "match") {
-                document.getElementById("match").checked = true;
-            }
-
-            if (curType == "practice") {
-                document.getElementById("practice").checked = true;
-            }
-        }
-
-        window.onload = loadFields;
-
-        /*
-        Make updates and save the new info/changes
-        */
-        function save_Changes() {
-            window.alert("Changes Saved");
-
-            var team = JSON.parse(localStorage.getItem("team"));
-            var gameId = localStorage.getItem("editGame");
-            var fields = team.schedule[gameId];
-
-            var newOpp = document.getElementById("opponent").value;
-            var newDate = document.getElementById("date").value;
-            var newTime = document.getElementById("time").value;
-            var newAddr = document.getElementById("location").value;
-
-            fields.opponent = newOpp;
-            fields.date = newDate;
-            fields.time = newTime;
-            fields.address = newAddr;
-            fields.statsFor = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-            fields.statsAgainst = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-            var home_status = document.getElementById("home").checked;
-            var away_status = document.getElementById("away").checked;
-            if (home_status) {
-                fields.location = "home";
-            }
-            if (away_status) {
-                fields.location = "away";
-            }
-
-            var match_checked = document.getElementById("match");
-            var practice_checked = document.getElementById("practice");
-            if (match_checked.checked) {
-                fields.type = "match";
-            }
-            if (practice_checked.checked) {
-                fields.type = "practice";
-            }
-
-            localStorage.setItem("team", JSON.stringify(team));
-        }
-
-        function delete_Game() {
-            if (confirm("Do you want to delete the game?") == true) {
-                alert("Game Deleted");
-                var team = JSON.parse(localStorage.getItem("team"));
-                var gameId = localStorage.getItem("editGame");
-                var fields = team.schedule[gameId];
-
-                team.schedule.splice(gameId, 1);
-                localStorage.setItem("team", JSON.stringify(team));
-                return true;
-            }
-            else {
-                alert("Cancelled");
-                return false;
-            }
-        }
-
-
-    </script>
-
-
-            <title>Edit Game</title>
+    <script src="permission.js"></script>
+    <script src="logged_in.js"></script>
+    <script src="editGame.js"></script>
+    <title>Edit Game</title>
 </head>
     <body style="margin:0 0.1rem 0.1rem 0.1rem;">
-            <header id="topPage">
+                <header id="topPage">
                     <h1>Team MBR</h1>
                     <nav>
                             <a href="index.html">Home</a>
@@ -131,40 +21,28 @@
                      </nav>
                 </header>
 
-                <form name="gameForm" method="get" action="viewSchedule.html">
-                <!--Opponent-->
+                <form name="gameForm" method="POST" action="viewSchedule.html">
                         <label for="opponent" >Opponent Team:</label>
                             <input type="text" id="opponent" name="opponent" />
-            
-                    <!--Date-->
+
                         <label for="date">Date:</label>
                             <input type="date" id="date" name="date" />
             
-                    <!--Time-->
                         <label for="time">Time:</label>
                             <input type="time" id="time" name="time" />
             
-                    <!--Location-->
-                        <label for="location">Location:</label>
-                            <input type="text" id="location" name="location" />
-            
-                    <!--Home/Away-->
+                        <label for="address">Location:</label>
+                            <input type="text" id="address" name="adress" />
+                                  
                         <label>Status:</label>
-                        <br />
                         <label><input type="radio" id="home" name="status" value="sethome">Home</label>
-                        <br />
                         <label><input type="radio" id="away" name="status" value="setaway">Away</label>
-                        <br />
-                    <!--Type of Game-->
+                        <br/>
                         <label>Type of Game:</label>
-                        <br />
-                        <label><input type="checkbox" id="match" name="gametype" value="match" />Match</label>
-                        <br />
-                        <label><input type="checkbox" id="practice" name="gametype" value="practice" />Practice</label>
-
-            <input id="save" type="submit" value="Save Game" name="Save" onclick="save_Changes()">
-            <input id="delete" type="submit" value="Delete Game" name="Delete" onclick="delete_Game()">
-           
+                        <label><input type="radio" id="match" name="gametype" value="match" />Match</label>
+                        <label><input type="radio" id="practice" name="gametype" value="practice" />Practice</label>
+            <input id="save" type="submit" value="Save Game" name="Save" onclick="saveEvent()">
+            <input id="delete" type="submit" value="Delete Game" name="Delete" onclick="deleteG()">
         </form>
     </body>
 </html>

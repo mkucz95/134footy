@@ -1,4 +1,4 @@
-    buildHtml();
+buildHtml();
 
 function edit(id) {
     localStorage.setItem('editGame', id);
@@ -13,35 +13,27 @@ function view(id) {
 function buildHtml(){
     const matchErr = '<tr><td>No scheduled matches.</td></tr>';
     const practiceErr = '<tr><td>No scheduled practices.</td></tr>';
-
+    var counter = 0;
     const teamSched = (JSON.parse(localStorage.getItem("team"))).schedule;    
      if (teamSched) {
-        for (i = 0; i < teamSched.length; i++) {
-            var gameAddr = teamSched[i]["address"];
-            var gameDate = teamSched[i]["date"];
-            var gameTime = teamSched[i]["time"];
-            var gameType = teamSched[i]["type"];
-            var gameLoc = teamSched[i]["location"];
-            var opponent = teamSched[i]["opponent"];
-    
+         teamSched.forEach(function(event){
             var el;
-            if (gameType == "match") {
+            if (event.type == "match") {
                 el=document.querySelector("#matches");
             }else{
                 el=document.querySelector("#practices");
             }
             var newEl = document.createElement('tr');
-            newEl.innerHTML = `<td>${gameLoc} @ ${gameAddr}</td><td id="${i}" onclick="view(this.id)"> ${gameDate} at ${gameTime}</td> <td> ${opponent}</td><td class="edit permission" id="${i}" onclick="edit(this.id)">edit</td>`;
+            newEl.innerHTML = `<td>${event.location} @ ${event.address}</td><td id="${counter}" onclick="view(this.id)"> ${event.date} at ${event.time}</td> <td> ${event.opponent}</td><td class="edit permission" id="${counter}" onclick="edit(this.id)">edit</td>`;
             el.insertAdjacentElement('beforeend',newEl);
-        }
+            counter++;
+         });
     }
-    let matches = document.getElementById("matches");
-    let practices = document.getElementById("practices");
-    
-    if(matches.childElementCount<1){
+
+    if(document.getElementById("matches").childElementCount<1){
         matches.innerHTML = matchErr;
     }
-    if(practices.childElementCount<1){
+    if(document.getElementById("practices").childElementCount<1){
         practices.innerHTML = practiceErr;        
     }
 }

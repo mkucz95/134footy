@@ -13,34 +13,25 @@
         function saveGame() {
             var team = JSON.parse(localStorage.getItem("team"));
             var newGame = {}
-            newGame["opponent"] = document.forms["gameForm"]["opponent"].value;
-            newGame["date"] = document.forms["gameForm"]["date"].value;
-            newGame["time"] = document.forms["gameForm"]["time"].value;
-            newGame["address"] = document.forms["gameForm"]["location"].value;
+            ["opponent", "date", "time", "address"].forEach(info=>
+        newGame[info]=document.forms["gameForm"][info].value);
             newGame["statsFor"] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
             newGame["statsAgainst"] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
             var home_status = document.forms["gameForm"]["home"].checked;
-            var away_status = document.forms["gameForm"]["away"].checked;
-            if (home_status) {
+            if (home_status){
                 newGame["location"] = "home";
-            }
-            if (away_status.value == 1) {
+            }else{
                 newGame["location"] = "away";
             }
 
             var match_checked = document.getElementById("match");
-            var practice_checked = document.getElementById("practice");
             if (match_checked.checked) {
                 newGame["type"] = "match";
-            }
-            if (practice_checked.checked) {
+            }else{
                 newGame["type"] = "practice";
             }
-
             team.schedule.push(newGame);
-
-
             localStorage.setItem("team", JSON.stringify(team));
         }
     </script>
@@ -59,36 +50,22 @@
 
     <h2 style="text-align:center">Add Game</h2>
     <form name="gameForm" method="POST" action="viewSchedule.html">
-        
-        <!--Opponent-->
             <label for="opponent">Opponent Team:</label>
                 <input type="text" id="opponent" placeholder="Opponent Team" />
-        <!--Date-->
             <label for="date">Date:</label>
-                <input type="date" id="date" />
-        <!--Time-->
+                <input type="date" id="date"/>
             <label for="time">Time:</label>
-                <input type="time" id="time" />        
-
-        <!--Location-->
-            <label for="location">Location:</label>
-                <input type="text" id="location" placeholder="Location" />
-        <!--Home/Away-->
+                <input type="time" id="time"/>        
+            <label for="address">Location:</label>
+                <input type="text" id="address" placeholder="Address" />
             <label>Status:</label>
-            <br />
             <label><input type="radio" id="home" name="status" value="sethome">Home</label>
-            <br />
             <label><input type="radio" id="away" name="status" value="setaway">Away</label>
-            <br />
+            <br>
             <label>Type of Game:</label>
-            <br />
-            <label><input type="checkbox" id="match" name="gametype" value="match" />Match</label>
-            <br />
-            <label><input type="checkbox" id="practice" name="gametype" value="practice"/>Practice</label>
-
-        <!--Add to Schedule-->
+            <label><input type="radio" id="match" name="gametype" value="match" />Match</label>
+            <label><input type="radio" id="practice" name="gametype" value="practice"/>Practice</label>
         <button type="button" onclick="saveGame()">Add Game</button>
     </form>
-
 </body>
 </html>
