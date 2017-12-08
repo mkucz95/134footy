@@ -28,8 +28,10 @@
         var user = db.ref('users');
         user.once('value').then(x => {
             x.forEach(y => {
-                alert(y.key);
-                alert(db.ref('users/' + y.key).child(y.key).fname);
+                var fname = db.ref('users/' + y.key + '/fname');
+                fname.once('value', function(snapshot) {
+                    alert(snapshot.val());
+                });
             })
         });  
 
