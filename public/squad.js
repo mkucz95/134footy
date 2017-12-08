@@ -15,8 +15,12 @@ function buildHtml() {
                 let jerseynum = snapshot.val().jerseynumber;
                 let dob = new Date(snapshot.val().dob);
                 let age = today_year - dob.getFullYear();
-                if (today_month < (dob.getMonth() + 1)) {age--;}
-                if (((dob.getMonth() + 1) == today_month) && (today_day < dob.getDate())) {age--;}
+                if (today_month < (dob.getMonth() - 1)) {
+                    age--;
+                }
+                if (((dob.getMonth() - 1) == today_month) && (today_day < dob.getDate())) {
+                    age--;
+                }
                 let el = document.createElement("tr");
                 el.id = counter;
                 el.innerHTML = `<td></td><td>${name}</td><td>${position}</td><td>${jerseynum}</td><td>${age}</td>`;
