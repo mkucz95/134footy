@@ -8,42 +8,8 @@
 <link type="text/css" rel="stylesheet" href="form.css">            
 <title>Add Player</title>
 <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-<script type="module">
-    import db from './db.js'
-    function add(){
-        var datab = db.ref('/team/players').push();
-        var key = datab.key;
-    
-        datab.set({
-            "fname": document.forms["newPlayer"]["fname"].value,
-            "lname": document.forms["newPlayer"]["lname"].value,
-            "profileImg": document.forms["newPlayer"]["profileImg"].value,
-            "email": document.forms["newPlayer"]["email"].value,
-            "dob": document.forms["newPlayer"]["dob"].value,
-            "jerseynumber": document.forms["newPlayer"]["jerseynumber"].value,
-            "position": document.forms["newPlayer"]["position"].value,
-            "captain": (document.forms["newPlayer"]["captain"].checked).toString(),
-            "starter": "false"
-        });
-
-    db.ref('/team/players/' + key + '/stats').set({
-    'assist': 0,
-    'goal': 0,
-    'shot': 0,
-    'onGoal': 0,
-    'foul': 0,
-    'red': 0,
-    'yellow': 0,
-    'corner': 0,
-    'gKick': 0,
-    'throw': 0,
-    'pen': 0
-    });
-
- }
-</script>
+<script type="module" src="addPlayer.js"></script>
 <script type="text/javascript" src="permission.js"></script>
-<!--<script src="addPlayer.js"></script>-->
 <link rel="manifest" href="/manifest.json">
 </head>
 <body style="margin:0 0.1rem 0.1rem 0.1rem;">
