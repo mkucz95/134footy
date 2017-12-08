@@ -1,5 +1,6 @@
+import firebase from './db.js';
+
 const team = JSON.parse(localStorage.getItem("team"));
-console.log(team);
 var overallStats = {
     'win':0,
     'loss':0,
@@ -8,8 +9,15 @@ var overallStats = {
     'goalsAgainst':0
 }
 
+function logout(){
+    console.log("logout");
+    firebase.auth().signOut().then(function(){
+        window.location = "login.html";        
+    }).catch(function(error){
+        console.error("signout unsuccessful");
+    })
+}
 var statsArr = ['win','loss','tie','goalsFor','goalsAgainst'];
-
 window.onload = function(){
     displayNextGame();
     updateSeasonStats();
@@ -19,7 +27,6 @@ function updateSeasonStats(){
         if(team.schedule[i].type == "match"){
         var goalFor = team.schedule[i].statsFor["goal"];
         var goalAgainst = team.schedule[i].statsAgainst["goal"];
-    
         if(goalFor<goalAgainst){
             overallStats['loss'] += 1;
         }
@@ -33,7 +40,6 @@ function updateSeasonStats(){
         overallStats['goalsAgainst'] += goalAgainst;
         }
     }
-    
     for(var j=0; j<statsArr.length; j++){
         var el = document.getElementById(statsArr[j]);
         el.innerHTML = overallStats[statsArr[j]];
@@ -58,15 +64,12 @@ function findNextGame(){
                 console.log("event id: "+i);
                 if(eventDate = today){
                     document.querySelector("#gamestats").style.visibility='visible';
-                }
-                return i;                
+                }return i;                
             }
-    }
-    return -1;
+    }return -1;
 }
 
 function displayNextGame(){
-    console.log("displayNextGame");
     const nextGame = findNextGame(); 
     if(nextGame != -1){
         let match = team.schedule[nextGame];

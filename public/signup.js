@@ -11,7 +11,7 @@ function userExists(email){
         });}
         return false
     });
-}
+} //TODO could delete this and just use server side checking
 
 function validate(){
     console.log("validating");
@@ -56,8 +56,15 @@ function validate(){
         };
         auth.createUserWithEmailAndPassword(email, pass).catch(function(error){
             var errorCode = error.code;
-            var errorMessage = error.message;
-            displayError(errorMessage);
+            var errorMessage = "";
+            if(error.code == "auth/email-already-in-use"){
+               errorMessage+= "User Already Exists | ";
+                
+            }if(error.code =="auth/weak-password"){
+                errorMessage+= "Choose Better Password | ";                
+            }if(error.code =="auth/invalid-email"){
+                errorMessage+="Invalid Email |";
+            }displayError(errorMessage);
         });
 
         firebase.auth().onAuthStateChanged(firebaseUser => {

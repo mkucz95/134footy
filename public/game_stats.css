@@ -4,7 +4,6 @@
     margin-bottom: .5rem;
     margin-top:0;    
 }
-
 #save{
     background-color:dodgerblue;
     color:white;
@@ -12,7 +11,6 @@
     width:100%;
     font-size:1.3rem;
 }
-
 #edit_stats {
     display: block;
     width: 100%;
@@ -30,20 +28,17 @@
     transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     text-transform: none;
 }
-
 #edit_stats:hover {
     background-color:#ff0000;
     color:white;
     text-decoration:underline;
 }
-
 .minus{
     background-color: #d9534f;
     width:2rem;
     height:2rem;
     color:white;
 }
-
 .plus{
     background-color: #5cb85c;
     float: left;
@@ -51,21 +46,17 @@
     height: 2rem;
     color: white;
 }
-
 .left{
     float:left;
 }
-
 .right{
     float: right;    
 }
-
 #edit{
     display:flex;
     justify-content:flex-end;
     text-decoration:none;
 }
-
 .editStat{
     display: inline-block;
     font-weight: 400;
@@ -77,7 +68,6 @@
     border-radius: .25rem;
     transition: all .2s ease-in-out;
 }
-
 table{
     table-layout: fixed; width: 100%;
     max-width: 100%;
@@ -87,19 +77,15 @@ table{
     border-spacing: 2px;
     border-color: grey;
 }
-
-
 th{
     vertical-align: bottom;
     border-bottom: 2px solid #eceeef;
 }
-
 td, th{
     vertical-align: top;
     border-top: 1px solid #eceeef;
     padding: .3rem;
 }
-
 body{
     font-family: "Helvetica Neue", Arial ,sans-serif;
     font-size: 1rem;
@@ -107,8 +93,6 @@ body{
     line-height: 1.5;
     color: #292b2c;
     background-color: #fff;
+    text-align:center;margin-top:0;
 }
-
-button:not(.editStat){
-
-}
+#dataInput{visibility:hidden;display:grid;border:1px solid red;border-radius:2px; padding:0.3rem;}

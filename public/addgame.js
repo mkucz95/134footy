@@ -2,11 +2,11 @@ function saveGame() {
     var team = JSON.parse(localStorage.getItem("team"));
     var newGame = {}
     ["opponent", "date", "time", "address"].forEach(info=>
-newGame[info]=document.forms["gameForm"][info].value);
+newGame[info]=document.getElementById[info].value);
     newGame["statsFor"] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     newGame["statsAgainst"] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    var home_status = document.forms["gameForm"]["home"].checked;
+    var home_status = getElementById("home").checked;
     if (home_status){
         newGame["location"] = "home";
     }else{

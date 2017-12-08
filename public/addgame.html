@@ -8,7 +8,6 @@
     <link type="text/css" rel="stylesheet" href="nav.css">
     <script src="permission.js"></script>
     <script src="addgame.js"></script>
-    
     <title>Add Game</title>
 <link rel="manifest" href="/manifest.json"></head>
 <body style="margin:0 0.1rem 0.1rem 0.1rem;">
@@ -20,17 +19,15 @@
             <a href="viewSquad.html">Squad</a>
      </nav>
     </header>
-
     <h2 style="text-align:center">Add Game</h2>
-    <form name="gameForm" method="POST" action="viewSchedule.html">
             <label for="opponent">Opponent Team:</label>
-                <input type="text" id="opponent" placeholder="Opponent Team" />
+                <input type="text" id="opponent" name="opponent" placeholder="Opponent Team" />
             <label for="date">Date:</label>
-                <input type="date" id="date"/>
+                <input type="date" id="date" name="date"/>
             <label for="time">Time:</label>
-                <input type="time" id="time"/>        
+                <input type="time" id="time" name="time"/>        
             <label for="address">Location:</label>
-                <input type="text" id="address" placeholder="Address" />
+                <input type="text" id="address" name="address" placeholder="Address" />
             <label>Status:</label>
             <label><input type="radio" id="home" name="status" value="sethome">Home</label>
             <label><input type="radio" id="away" name="status" value="setaway">Away</label>
@@ -38,7 +35,6 @@
             <label>Type of Game:</label>
             <label><input type="radio" id="match" name="gametype" value="match" />Match</label>
             <label><input type="radio" id="practice" name="gametype" value="practice"/>Practice</label>
-        <button type="button" onclick="saveGame()">Add Game</button>
-    </form>
+        <button onclick="saveGame()">Add Game</button>
 </body>
 </html>

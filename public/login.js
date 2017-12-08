@@ -1,10 +1,12 @@
+import firebase from './db.js';
 const signup = document.querySelector('#signup');
 const loginDoc = document.querySelector('#login');
 const forgotInfo = document.querySelector('#forgot');
 const forgotPass = document.querySelector('#send>button');
-import firebase from './db.js';
+
 const auth=firebase.auth();
 firebase.auth.Auth.Persistence.LOCAL;
+//explicit sign out needed to clear persistence state
 
 signup.addEventListener('click', e=>{
    window.location = 'signup.html';

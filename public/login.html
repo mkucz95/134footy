@@ -10,8 +10,8 @@
     #successSend{border:2px solid green;border-radius:3px;}</style>
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
     <script type="module">
-        import db from './db.js'
-        /*
+        /*import db from './db.js'
+        
         db.ref('users').remove();
         db.ref('users').push().set({
                 "fname":"Mati",
@@ -28,7 +28,7 @@
                 "password":"pizza"
             });
         */
-        var user = db.ref('users');
+    /*    var user = db.ref('users');
         user.once('value').then(x => {
             x.forEach(y => {
                 var fname = db.ref('users/' + y.key + '/fname');
@@ -36,28 +36,24 @@
                     alert(snapshot.val());
                 });
             })
-        });  
+        });  */
     </script>
 <link rel="manifest" href="/manifest.json"></head>
 <body style="margin:0 0.1rem 0.1rem 0.1rem;">
             <header id="topPage" style="margin-bottom:2rem;">
                 <h1>Team MBR</h1>
             </header>
-
             <input name="username" style="width:70%; height:2rem; padding:0px 20px" type="text" id="username" placeholder="Username" />
             <input name="password" style="width:70%; height:2rem; padding:0px 20px;" type="password" id="password" placeholder="Password" />
             <button id="login" style="display:block; margin-top:0.2rem;">Log In</button>
             <button id="forgot" style="display:block; margin-top:2rem;">Forgot Login</button>
-
             <div id="send">
                 <input name="email" style="width:70%; height:2rem; padding:0px 20px" type="email" id="email" placeholder="email"/>            
                 <button>Send Password</button>
                 <p id="successSend">Password Sent to Email</p>
                 <p id="errorSend">Error In Sending Password- Check Email Validity</p>
             </div>
-
-            <p id="loginError">Login Error - Double Check Login Information</p>
-
+            <p id="loginError" style="visibility:hidden;">Login Error - Double Check Login Information</p>
         <button id="signup">New User</button>
         <script src="login.js"></script>
 </body>

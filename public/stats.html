@@ -9,10 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Edit Game Stats</title>
     <script type="text/javascript" src="permission.js"></script>
-    <script type="text/javascript" src="logged_in.js"></script>
-<link rel="manifest" href="/manifest.json"></head>
-
-<body style="text-align:center;margin-top:0;">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
     <header id="topPage">
         <h1>Team MBR</h1>
         <nav>
@@ -24,58 +23,47 @@
     <h4>MBR vs.<span class="opponentName" style="display:inline;">Enemies</span></h4>
     <aside>-</aside>
     <button style="color:red;border:1px solid red;margin-top:0.5rem;"class="editStat permission" onclick='openEdit("dataInput")'>Enter Stat</button>
-
         <table>
             <thead><tr><th> Goals</th></tr></thead>
             <tbody><tr><td id="homegoal">0</td><td id="awaygoal">0</td></tr></tbody>
         </table>
-
         <table>
             <thead><tr><th>Assists</th></tr><thead>
             <tbody><tr><td id="homeassist">0</td><td id="awayassist">0</td></tr></tbody>
         </table>
-       
-             <table>
-                <thead><tr><th>Shots: Total | on Target</th></tr><thead>
-                <tbody><tr><td><span id="homeshot">0</span> | <span id="homeonGoal">0</span></td><td><span id="awayshot">0</span> | <span id="awayonGoal">0</span></td></tr></tbody>
-            </table>
-
-               <table class="fouls">
-                <thead><tr><th>Fouls</th></tr></thead>
-                <tbody><tr><td id="homefoul">0</td><td id="awayfoul">0</td></tr></tbody>
-            </table>
-            
             <table>
-                <thead><tr><th>Red Cards</th></tr></thead>
-                <tbody><tr><td id="homered">0</td><td id="awayred">0</td></tr></tbody>
-            </table>
-            
-            <table class="yellow">
-                <thead><tr><th>Yellow Cards</th></tr></thead>
-                <tbody><tr><td id="homeyellow">0</td><td id="awayyellow">0</td></tr></tbody>
-            </table>
-            
+            <thead><tr><th>Shots: Total | on Target</th></tr><thead>
+            <tbody><tr><td><span id="homeshot">0</span> | <span id="homeonGoal">0</span></td><td><span id="awayshot">0</span> | <span id="awayonGoal">0</span></td></tr></tbody>
+        </table>
+            <table class="fouls">
+            <thead><tr><th>Fouls</th></tr></thead>
+            <tbody><tr><td id="homefoul">0</td><td id="awayfoul">0</td></tr></tbody>
+        </table>
+        <table>
+            <thead><tr><th>Red Cards</th></tr></thead>
+            <tbody><tr><td id="homered">0</td><td id="awayred">0</td></tr></tbody>
+        </table>
+        <table class="yellow">
+            <thead><tr><th>Yellow Cards</th></tr></thead>
+            <tbody><tr><td id="homeyellow">0</td><td id="awayyellow">0</td></tr></tbody>
+        </table>
+        <table>
+            <thead><tr><th>Corner Kicks</th></tr></thead>
+            <tbody><tr><td id="homecorner">0</td><td id="awaycorner">0</td></tr></tbody>
+        </table>
+        <table class="goalkicks">
+            <thead><tr><th>Goal Kicks</th></tr></thead>
+            <tbody><tr><td id="homegKick">0</td><td id="awaygKick">0</td></tr></tbody>
+        </table>
             <table>
-                <thead><tr><th>Corner Kicks</th></tr></thead>
-                <tbody><tr><td id="homecorner">0</td><td id="awaycorner">0</td></tr></tbody>
-            </table>
-            
-            <table class="goalkicks">
-                <thead><tr><th>Goal Kicks</th></tr></thead>
-                <tbody><tr><td id="homegKick">0</td><td id="awaygKick">0</td></tr></tbody>
-            </table>
-            
-              <table>
-                <thead><tr><th>Throw Ins</th></tr></thead>
-                <tbody><tr><td id="homethrow">0</td><td id="awaythrow">0</td></tr></tbody>
-            </table>
-            
-             <table>
-                    <thead><tr><th>Penalties</th></tr></thead>
-                    <tbody><tr><td id="homepen">0</td><td id="awaypen">0</td></tr></tbody>
-            </table>
-
-                <div id="dataInput" style="visibility:hidden;display:grid;border:1px solid red;border-radius:2px; padding:0.3rem;">
+            <thead><tr><th>Throw Ins</th></tr></thead>
+            <tbody><tr><td id="homethrow">0</td><td id="awaythrow">0</td></tr></tbody>
+        </table>
+            <table>
+                <thead><tr><th>Penalties</th></tr></thead>
+                <tbody><tr><td id="homepen">0</td><td id="awaypen">0</td></tr></tbody>
+        </table>
+            <div id="dataInput">
                     <label>Choose Statistic:</label> 
                     <select id="form-stat" name="stat" required>
                         <option value="" disabled>Choose Stat</option>
@@ -91,19 +79,12 @@
                         <option value="pen">Penalty</option>
                         <option value="assist">Assist</option>                        
                     </select>    
-                    
                     <label>Choose Team:</label>                        
                         <select id="form-team" name="team" required><option value="" disabled>Choose</option><option value="home">Home Team</option><option value="away" class="opponentName">Opponent</option></select>
-                                                    
-                    
                     <label>Assign to Player:</label>
                         <select id="form-number" name="number" class="playerSelect"><option disabled value="">Choose</option><option value="-1">no player</option></select>
-                    
-
                     <label>Action:</label>
                         <select id="form-action" name="action" required><option disabled value="">Choose</option><option value="add">+</option><option value="minus">-</option></select>
-                    
-                   
                     <button id="cancel" onclick="closeEdit('dataInput')">Cancel</button>
                     <button id="saveStat" onclick="save()">Save</button>     
                  </div>            

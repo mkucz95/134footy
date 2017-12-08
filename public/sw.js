@@ -26,8 +26,8 @@ const cacheFiles = [
     'table.css',
 
     //js files
-    'logged_in.js',
-    'permissions.js',
+    'permission.js',
+    'addgame.js',
     'loadData.js',
     'homeDisplay.js',
     'player.js',
@@ -122,7 +122,7 @@ workboxSW.precache([
     { url: 'table.css' },
 
     //js files
-    { url: 'permissions.js' },
+    { url: 'permission.js' },
     { url: 'loadData.js' },
     { url: 'homeDisplay.js' },
     { url: 'player.js' },
