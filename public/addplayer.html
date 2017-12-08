@@ -9,7 +9,7 @@
 <title>Add Player</title>
 <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
 <script type="module">
-    import db from './db.js'
+    import {auth, database} from './db.js'
     function add(){
         var datab = db.ref('/team/players').push();
         var key = datab.key;
