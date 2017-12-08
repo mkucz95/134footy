@@ -1,41 +1,17 @@
-[debug] [2017-12-08T00:40:20.795Z] ----------------------------------------------------------------------
-[debug] [2017-12-08T00:40:20.797Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Brian\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
-[debug] [2017-12-08T00:40:20.798Z] CLI Version:   3.16.0
-[debug] [2017-12-08T00:40:20.798Z] Platform:      win32
-[debug] [2017-12-08T00:40:20.798Z] Node Version:  v6.11.4
-[debug] [2017-12-08T00:40:20.798Z] Time:          Thu Dec 07 2017 16:40:20 GMT-0800 (Pacific Standard Time)
-[debug] [2017-12-08T00:40:20.798Z] ----------------------------------------------------------------------
+[debug] [2017-12-08T06:36:06.033Z] ----------------------------------------------------------------------
+[debug] [2017-12-08T06:36:06.035Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Brian\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2017-12-08T06:36:06.036Z] CLI Version:   3.16.0
+[debug] [2017-12-08T06:36:06.036Z] Platform:      win32
+[debug] [2017-12-08T06:36:06.036Z] Node Version:  v6.11.4
+[debug] [2017-12-08T06:36:06.037Z] Time:          Thu Dec 07 2017 22:36:06 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-08T06:36:06.037Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-12-08T00:40:20.811Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-12-08T00:40:20.811Z] > authorizing via signed-in user
-[debug] [2017-12-08T00:40:20.813Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2017-12-08T00:40:20.814Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- { refresh_token: '1/zwy5v8WTkNzUq2us_Je8rNSdMnxG5S1a01tNnJi6_l8',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Thu Dec 07 2017 16:40:20 GMT-0800 (Pacific Standard Time)
-[debug] [2017-12-08T00:40:21.044Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-08T00:40:21.057Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/footy-b0652  
+[debug] [2017-12-08T06:36:06.049Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-08T06:36:06.050Z] > authorizing via signed-in user
+[debug] [2017-12-08T06:36:06.052Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/footy-b0652  
   
- Thu Dec 07 2017 16:40:21 GMT-0800 (Pacific Standard Time)
-[debug] [2017-12-08T00:40:21.560Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-08T00:40:21.561Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/footy-b0652/tokens  
+ Thu Dec 07 2017 22:36:06 GMT-0800 (Pacific Standard Time)
+[debug] [2017-12-08T06:36:06.878Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-08T06:36:06.882Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/footy-b0652/tokens  
   
- Thu Dec 07 2017 16:40:21 GMT-0800 (Pacific Standard Time)
-[debug] [2017-12-08T00:40:22.187Z] <<< HTTP RESPONSE 200
-[info] 
-[info] === Serving from 'C:\Users\Brian\source\repos\134footy'...
-[info] 
-[debug] [2017-12-08T00:40:22.198Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/footy-b0652  
-  
- Thu Dec 07 2017 16:40:22 GMT-0800 (Pacific Standard Time)
-[debug] [2017-12-08T00:40:22.708Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-08T00:40:22.709Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/141339264361/clients/_:getWebAppConfig  
-  
- Thu Dec 07 2017 16:40:22 GMT-0800 (Pacific Standard Time)
-[debug] [2017-12-08T00:40:23.231Z] <<< HTTP RESPONSE 200
-[info] i  hosting: Serving hosting files from: public
-[info] +  hosting: Local server: http://localhost:5000
-
+ Thu Dec 07 2017 22:36:06 GMT-0800 (Pacific Standard Time)

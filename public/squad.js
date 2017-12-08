@@ -1,6 +1,7 @@
 buildHtml();
 
-function buildHtml(){
+function buildHtml() {
+
     var today_date = new Date();
     var today_year = today_date.getFullYear();
     var today_month = today_date.getMonth();
