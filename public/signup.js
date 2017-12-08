@@ -1,6 +1,4 @@
-import firebase from './db.js';
-const auth=firebase.auth();
-import database from './db.js';
+import {auth, database} from './db.js';
 
 function userExists(email){
     var users = database.ref('users/');
@@ -67,7 +65,7 @@ function validate(){
             }displayError(errorMessage);
         });
 
-        firebase.auth().onAuthStateChanged(firebaseUser => {
+        auth.onAuthStateChanged(firebaseUser => {
             if(firebaseUser){
                 console.log(firebaseUser);
                 addExtra(firebaseUser.uid, userData);

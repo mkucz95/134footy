@@ -1,4 +1,4 @@
-import firebase from './db.js';
+import {auth, database} from './db.js';
 
 const team = JSON.parse(localStorage.getItem("team"));
 var overallStats = {
@@ -9,9 +9,9 @@ var overallStats = {
     'goalsAgainst':0
 }
 
-function logout(){
+function logoutUser(){
     console.log("logout");
-    firebase.auth().signOut().then(function(){
+    auth.signOut().then(function(){
         window.location = "login.html";        
     }).catch(function(error){
         console.error("signout unsuccessful");

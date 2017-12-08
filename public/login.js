@@ -1,11 +1,10 @@
-import firebase from './db.js';
+import {auth, database} from './db.js';
 const signup = document.querySelector('#signup');
 const loginDoc = document.querySelector('#login');
 const forgotInfo = document.querySelector('#forgot');
 const forgotPass = document.querySelector('#send>button');
 
-const auth=firebase.auth();
-firebase.auth.Auth.Persistence.LOCAL;
+auth.Auth.Persistence.LOCAL;
 //explicit sign out needed to clear persistence state
 
 signup.addEventListener('click', e=>{
@@ -15,8 +14,6 @@ signup.addEventListener('click', e=>{
 loginDoc.addEventListener('click', e=>{
     const email=document.getElementById("username").value;
     const pass=document.getElementById("password").value;
-    
-
     const promise=auth.signInWithEmailAndPassword(email, pass);
     promise.catch(e=>
         {
@@ -34,7 +31,7 @@ forgotPass.addEventListener('click', e=>{
    }).catch(err => document.getElementById("errorSend").style.visibility='visible');
 });
 
-firebase.auth().onAuthStateChanged(firebaseUser => {
+auth.onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
         console.log(firebaseUser);
     }else{
