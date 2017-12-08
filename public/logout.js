@@ -1,5 +1,6 @@
 import {auth, database} from './db';
-document.querySelector('#signout').addEventListener('click', function(){
+console.log(document.getElementById('signout'));
+document.getElementById('signout').addEventListener('click', function(){
     console.log("logout");
     auth.signOut().then(function(){
         window.location = "login.html";        

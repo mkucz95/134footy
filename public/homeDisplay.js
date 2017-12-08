@@ -1,6 +1,7 @@
-import {auth, database} from './db';
+
 
 const team = JSON.parse(localStorage.getItem("team"));
+console.log(team);
 var overallStats = {
     'win':0,
     'loss':0,
@@ -8,7 +9,7 @@ var overallStats = {
     'goalsFor':0,
     'goalsAgainst':0
 }
-var statsArr = ['win','loss','tie','goalsFor','goalsAgainst'];
+
 window.onload = function(){
     displayNextGame();
     updateSeasonStats();
@@ -31,10 +32,11 @@ function updateSeasonStats(){
         overallStats['goalsAgainst'] += goalAgainst;
         }
     }
-    for(var j=0; j<statsArr.length; j++){
-        var el = document.getElementById(statsArr[j]);
-        el.innerHTML = overallStats[statsArr[j]];
-    }
+    ['win','loss','tie','goalsFor','goalsAgainst'].forEach(stat=>{
+        console.log(stat);
+        let el = document.getElementById(stat);
+        el.innerHTML = overallStats[stat];
+    })
 }
 
 function getCurrDate(){

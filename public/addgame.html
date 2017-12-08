@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <link type="text/css" rel="stylesheet" href="form.css">
     <link type="text/css" rel="stylesheet" href="nav.css">
-        <script type="module" src="permission.js"></script>
+    <script type="module" src="permission.js"></script>
     <script src="addgame.js"></script>
     <title>Add Game</title>
 <link rel="manifest" href="/manifest.json"></head>
@@ -21,15 +21,15 @@
     </header>
     <h2 style="text-align:center">Add Game</h2>
     <div style="display:grid;">
-            <label for="opponent">Opponent Team:<input type="text" id="opponent" name="opponent" placeholder="Opponent Team" /></label>
-            <label for="date">Date:<input type="date" id="date" name="date"/></label>
-            <label for="time">Time:<input type="time" id="time" name="time"/></label>
-            <label for="address">Location:<input type="text" id="address" name="address" placeholder="Address"/></label>
+            <label for="opponent">Opponent Team:<input type="text" id="opponent" name="opponent" placeholder="Opponent Team"/></label>
+            <label for="date">Date:<input type="date" id="date" name="date" required/></label>
+            <label for="time">Time:<input type="time" id="time" name="time" required/></label>
+            <label for="address">Location:<input type="text" id="address" name="address" placeholder="Address" required/></label>
             <aside>Status:</aside>
             <label><input type="radio" id="home" name="status" value="sethome">Home</label>
             <label><input type="radio" id="away" name="status" value="setaway">Away</label>
             <aside>Type of Game:</aside>
-            <label><input type="radio" id="match" name="gametype" value="match" />Match</label>
+            <label><input type="radio" id="match" name="gametype" value="match" required/>Match</label>
             <label><input type="radio" id="practice" name="gametype" value="practice"/>Practice</label>
     </div>
         <button onclick="saveGame()">Add Game</button>

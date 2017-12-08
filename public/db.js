@@ -1,5 +1,7 @@
 // JavaScript source code
 // Initialize Firebase
+console.log("db - execute");
+
 var config = {
     apiKey: "AIzaSyCep4diOeZnGMpQIyeaO0RGCju42EKTkW4",
     authDomain: "footy-b0652.firebaseapp.com",

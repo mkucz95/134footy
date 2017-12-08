@@ -1,0 +1,37 @@
+#gamestats {
+    display: block;
+    width: 100%;
+    color: #ff0000;
+    background-color: transparent;
+    background-image: none;
+    border-color: #ff0000;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    text-transform: none;
+}
+body, table{
+    text-align: center;
+    align-content: center;
+    margin: auto;
+}
+body{
+    font-family: "Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    margin: 0; 
+}
+a{
+    text-decoration: none;
+    color: #ff0000;
+}
+header>button{
+    position:absolute;right:0.1rem;top:0.5rem;border-radius:2rem;font-size:0.7rem;
+}

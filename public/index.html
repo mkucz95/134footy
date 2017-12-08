@@ -6,61 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link type="text/css" rel="stylesheet" href="nav.css">
-    <script type="module" src="permission.js"></script>
+    <link type="text/css" rel="stylesheet" href="home.css"> 
+    <script type="module" src="db.js"></script>    
+    <script type="module" src="homeDisplay.js"></script>
+    <script type="module" src="logout.js"></script>
+    <script type="module" src="permission.js"></script>   
     <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('/sw.js').then(function (registration) {
-                    // Registration was successful
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, function (err) {
-                    // registration failed
-                    console.log('ServiceWorker registration failed: ', err);
-                });
-            });
-        }
+
     </script>
-    <style>
-        #gamestats {
-            display: block;
-            width: 100%;
-            color: #ff0000;
-            background-color: transparent;
-            background-image: none;
-            border-color: #ff0000;
-            font-weight: 400;
-            text-align: center;
-            white-space: nowrap;
-            padding: .375rem .75rem;
-            font-size: 1rem;
-            line-height: 1.5;
-            border-radius: .25rem;
-            transition: background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-            text-transform: none;
-        }
-        body, table{
-            text-align: center;
-            align-content: center;
-            margin: auto;
-        }
-        body{
-            font-family: "Helvetica Neue",Arial,sans-serif;
-            font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: #212529;
-            margin: 0; 
-        }
-        a{
-            text-decoration: none;
-            color: #ff0000;
-        }
-        header>button{
-            position:absolute;right:0.1rem;top:0.5rem;border-radius:2rem;font-size:0.7rem;
-        }
-    </style>
     <title>Home Screen</title>
-<script type="module" src="logout.js"></script>
 <link rel="manifest" href="/manifest.json"></head>
 <body style="margin:0 0.1rem 0.1rem 0.1rem;">
     <header id="topPage">
@@ -104,6 +58,5 @@
     </div>
     <br/>
     <button style="visibility:hidden;" id="gamestats" onclick="liveStats()">Live Game Stats</button>
-<script type="module" src="homeDisplay.js"></script>
 </body>
 </html>

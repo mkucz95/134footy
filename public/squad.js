@@ -1,43 +1,42 @@
-buildHtml();
-
+import db from './db';
 function buildHtml() {
-
     var today_date = new Date();
     var today_year = today_date.getFullYear();
     var today_month = today_date.getMonth();
     var today_day = today_date.getDate();
     var tBody = document.querySelector('#template');
     var counter=0;
+    console.log(tBody);
 
-    var team = JSON.parse(localStorage.getItem("team"));
-        team.players.forEach(
-            function(player){
-            let name = player.fname + " " + player.lname;
-            let position = player.position;
-            let jerseynum = player.jerseynumber;
-            console.log(player.dob);
-            let date = new Date(player.dob);
-            console.log(date.getFullYear());
-            let age = today_year - date.getFullYear();
+    db.ref('team/players/').once('value').then(x => {
+        x.forEach(y => {
+                    let name = y.val().fname + " " + y.val().lname;
+                    let position = y.val().position;
+                    let jerseynum = y.val().jerseynumber;
+                    let dob = new Date(y.val().dob);
+                    let age = today_year - dob.getFullYear();
 
-            if (today_month < (date.getMonth() + 1)) {
-                age--;
-            }
-            if (((date.getMonth() + 1) == today_month) && (today_day < date.getDate())) {
-                age--;
-            }
+                    console.log(name+position+jerseynum+dob+age);
+                    
+                    if (today_month < (dob.getMonth() + 1)) {
+                        age--;
+                    }
+                    if (((dob.getMonth() + 1) == today_month) && (today_day < dob.getDate())) {
+                        age--;
+                    }
 
-            let el = document.createElement("tr");
-            el.id = counter;
-            el.innerHTML = `<td></td><td>${name}</td><td>${position}</td><td>${jerseynum}</td><td>${age}</td>`;
-            el.onclick = function(){edit(this.id)};            
-            console.log(el);
-            tBody.appendChild(el);
-            counter++;
-        });
-}
-
+                    let el = document.createElement("tr");
+                    el.id = counter;
+                    el.innerHTML = `<td></td><td>${name}</td><td>${position}</td><td>${jerseynum}</td><td>${age}</td>`;
+                    el.onclick = function(){edit(this.id)};
+                    console.log(el);
+                    tBody.appendChild(el);
+                    counter++;
+                });
+        });}
+            
 function edit(id) {
-                window.location.href = `viewplayer.html?id=${id}`;
+    window.location.href = `viewplayer.html?id=${id}`;
 }
-           
+
+window.onload = buildHtml;

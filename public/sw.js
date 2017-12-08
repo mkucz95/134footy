@@ -1,4 +1,3 @@
-// JavaScript source code
 
 //Files to cache in ServiceWorker
 const cacheID = 'v1';
@@ -22,8 +21,10 @@ const cacheFiles = [
     'nav.css',
     'signup.css',
     'table.css',
+    'home.css',
 
     //js files
+    'db.js',
     'permission.js',
     'addgame.js',
     'loadData.js',
@@ -33,7 +34,6 @@ const cacheFiles = [
     'squad.js',
     'stats.js',
     'sw.js',
-    'db.js',
     'logout.js',
 
     //manifest
@@ -117,6 +117,7 @@ workboxSW.precache([
     { url: 'nav.css' },
     { url: 'signup.css' },
     { url: 'table.css' },
+    {url:'home.css'},
 
     //js files
     { url: 'permission.js' },
