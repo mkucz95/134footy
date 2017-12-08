@@ -1,4 +1,4 @@
-import {auth,database,firebase} from'./db.js';
+import {auth,database} from'./db.js';
 auth.onAuthStateChanged(firebaseUser => {
     console.log(firebaseUser);
     if(firebaseUser){
@@ -12,6 +12,7 @@ auth.onAuthStateChanged(firebaseUser => {
             window.location.href = "login.html";        
         }
 });
+
     function updateElements(){
         console.log("updateEl-permissions");
         const els=document.getElementsByClassName("permission");

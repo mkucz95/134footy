@@ -9,7 +9,9 @@
 <title>View Player</title>
 <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
 <script type="module">
-    import db from './db.js'
+    import * as firebase from './db.js';
+    var db = firebase.database;
+    
     const url = window.location.href;
     document.querySelector("#editButton").onclick=function(){window.location.href=`editplayer.html?id=${view}`};
 
