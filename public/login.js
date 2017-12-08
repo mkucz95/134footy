@@ -1,4 +1,4 @@
-import {auth, database} from './db';
+import {auth, database} from './db.js';
 const signup = document.querySelector('#signup');
 const loginDoc = document.querySelector('#login');
 const forgotInfo = document.querySelector('#forgot');

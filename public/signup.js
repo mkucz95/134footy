@@ -1,4 +1,4 @@
-import {auth, database} from './db';
+import {auth, database} from './db.js';
 
 function userExists(email){
     var users = database.ref('users/');

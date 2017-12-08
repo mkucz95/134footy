@@ -1,4 +1,4 @@
-import {auth, database} from './db';
+import {auth, database} from './bd.js';
 console.log(document.getElementById('signout'));
 document.getElementById('signout').addEventListener('click', function(){
     console.log("logout");
