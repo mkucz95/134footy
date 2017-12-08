@@ -1,6 +1,4 @@
-import * as firebase from'./db.js';
-var auth = firebase.auth;
-var database=firebase.database;
+import {auth, database} from'./db.js';
 
     var currentUser = auth.currentUser;   
     console.log(currentUser);
