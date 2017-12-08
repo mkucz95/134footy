@@ -8,7 +8,6 @@ function displayPlayer() {
     document.getElementById(info).value=edit[info];
     document.getElementById(info).placeholder=edit[info];    
 });
-
     document.getElementById("captain").checked = (edit.captain == 'true');
     document.getElementById("starter").checked = (edit.starter == 'true');
 }
@@ -19,7 +18,6 @@ function change() {
     ["fname", "lname", "profileImg", "email", "dob", "jerseynumber", "position"].forEach(data=>
         team.players[view][data] = document.forms["editPlayer"][data].value
     );
-  //  var imag = img.replace(/^.*[\\\/]/, '');
     team.players[view]["captain"]=document.forms["editPlayer"]["captain"].checked.toString();
     team.players[view]["starter"]=document.forms["editPlayer"]["starter"].checked.toString();
     localStorage.setItem("team", JSON.stringify(team));

@@ -6,35 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">  
     <link type="text/css" rel="stylesheet" href="form.css">
     <link type="text/css" rel="stylesheet" href="nav.css">
-    <script type="text/javascript" src="permission.js"></script>
-    <script type="text/javascript" src="logged_in.js"></script>
-
-    <script type="text/javascript">
-        function saveGame() {
-            var team = JSON.parse(localStorage.getItem("team"));
-            var newGame = {}
-            ["opponent", "date", "time", "address"].forEach(info=>
-        newGame[info]=document.forms["gameForm"][info].value);
-            newGame["statsFor"] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-            newGame["statsAgainst"] = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-            var home_status = document.forms["gameForm"]["home"].checked;
-            if (home_status){
-                newGame["location"] = "home";
-            }else{
-                newGame["location"] = "away";
-            }
-
-            var match_checked = document.getElementById("match");
-            if (match_checked.checked) {
-                newGame["type"] = "match";
-            }else{
-                newGame["type"] = "practice";
-            }
-            team.schedule.push(newGame);
-            localStorage.setItem("team", JSON.stringify(team));
-        }
-    </script>
+    <script src="permission.js"></script>
+    <script src="addgame.js"></script>
     
     <title>Add Game</title>
 <link rel="manifest" href="/manifest.json"></head>

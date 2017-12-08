@@ -1,16 +1,20 @@
 // JavaScript source code
+import firebase from './db.js';
+import database from'./db.js';
+const auth = firebase.auth();
 
-    if (localStorage.getItem('permission') == "false") {
-        preventView();
-        alert("User not allowed to access page.");
-        window.location.href = "index.html";
+function userPermissions(){
+    var currentUser = auth.currentUser;    
+    if(currentUser!=null){
+        database.ref('users/'+currentUser.uid).once("value").then(snapshot=>
+        {if(snapshot.type === "coach"){
+            const els=document.getElementsByClassName("permission");
+            els.forEach(el=>el.style.visibility='hidden');        
+            }
+        });
+    }else{
+        window.location.href = "login.html";        
     }
+}
 
-    function preventView(){
-        const els=document.getElementsByClassName("permission");
-        
-        for(let i=0;i<els.length;i++){
-            els[i].style.visibility = 'hidden';
-        }
-        
-    }
+window.onload = userPermissions;

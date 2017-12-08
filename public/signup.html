@@ -3,111 +3,29 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="signup.css">       
-    <title>Sign Up</title>
-    <script type="text/javascript">
-    sessionStorage.setItem("passErr", "0");
-    sessionStorage.setItem("userErr", "0");
+    <link type="text/css" rel="stylesheet" href="nav.css"> 
+    <link type="text/css" rel="stylesheet" href="form.css"> 
     
-        function printError(text, location, type){
-            console.log("error()");
-            if(sessionStorage.getItem(type) === "0"){
-                var notification = document.createElement("em");
-                var emNode = document.createTextNode(text);
-                notification.className = "errorMsg";
-                notification.appendChild(emNode);
-                var insertDest = document.getElementById(location).previousSibling;
-                insertDest.appendChild(notification);
-                insertDest.nextSibling.style = "border:1px red solid;";
-                sessionStorage.setItem(type, "1");
-            }
-       }
-
-        function validate(){
-            console.log("validating");
-            var fname = document.forms["signup"]["fname"].value; 
-            var lname = document.forms["signup"]["lname"].value;
-            var email = document.forms["signup"]["email"].value;
-            var pass = document.forms["signup"]["password"].value;
-            var passCheck = document.forms["signup"]["confirmPassword"].value;
-            var type = document.forms["signup"]["who"].value;
-
-            var status = true;
-
-            if(pass !== passCheck){
-                printError("Passwords do Not Match", "confirm", "passErr");
-                console.error("Passwords do Not Match")
-                status=false;
-            }
-
-            var users = JSON.parse(localStorage.getItem("users"));
-           
-            var exists = false;
-            for(var i = 0; i<users.length; i++){
-                if(users[i].email == email){
-                    exists = true;
-                    break;
-                }
-            }
-            if(exists){
-                printError("User Already Exists", "username", "userErr");
-                console.error("User Already Exists")
-                status=false;
-            }
-
-            if(status){
-                save(fname, lname, email, pass, type);
-                localStorage.setItem("logged_in", email);
-                if(type == "coach") {
-                    localStorage.setItem("permission", "true");
-                }
-                else {
-                    localStorage.setItem("permission", "false");
-                }
-                sessionStorage.setItem("passErr", "0");
-                sessionStorage.setItem("userErr", "0");
-            }
-                return status;
-        
-        }
-        function save(fname,lname,email,pass,type){
-            var userData = {
-                "fname": fname,
-                "lname":lname,
-                "email":email,
-                "type": type,
-                 "password": pass
-            };
-
-            var users = JSON.parse(localStorage.getItem("users"));
-            console.log(users);
-            users.push(userData);
-
-            localStorage.setItem("users", JSON.stringify(users));
-
-            console.log("saved user");
-        }
-        </script>
-        <style>
-            em{margin-left:2rem; color:red; font-style:normal;font-weight:bold;}
-        </style>
+    <title>Sign Up</title>
+    <script src="signup.js"></script>
     <link rel="manifest" href="/manifest.json"></head>
     <body style="margin:0 0.1rem 0.1rem 0.1rem;">
-        <header>
+        <header id="topPage">
             <h1>Sign Up</h1>
         </header>
-        <form method="post" name="signup" action="index.html" onsubmit="return validate()">
-            <label class="info" for="username">Username (email):</label><input name="email" type="email" id="username" required> <br>
-            <label class="info" for="fname">First Name:</label><input name="fname" type="text" id="fname" required><br>
-            <label class="info" for="lname">Last Name:</label><input name="lname" type="text" id="lname" required><br>
-            <label class="info" for="password">Password:</label><input name="password" type="password" id="password" required><br>
+
+            <label class="info" for="username">Username (email):</label><input name="email" type="email" id="username" required>
+            <label class="info" for="fname">First Name:</label><input name="fname" type="text" id="fname" required>
+            <label class="info" for="lname">Last Name:</label><input name="lname" type="text" id="lname" required>
+            <label class="info" for="password">Password:</label><input name="password" type="password" id="password" required>
             <label class="info" for="confirm">Confirm Password:</label><input name="confirmPassword" type="password" id="confirm" required> 
 
            <h2>Who are you?</h2> 
-            <input type="radio" name="who" id="player" value="player" required><label class="info2" for="player">Player</label> 
-            <br><input type="radio" name="who" id="parent" value="parent"><label class="info2" for="parent">Parent</label> 
-            <br><input type="radio" name="who" id="coach" value="coach"><label class="info2" for="coach">Coach</label> 
-            <br><button type="submit">Submit</button>
-        </form>
+           <label><input type="radio" name="who" id="player" value="player" required>Player</label> 
+           <label><input type="radio" name="who" id="parent" value="parent">Parent</label> 
+           <label><input type="radio" name="who" id="coach" value="coach">Coach</label> 
+            <button type="submit">Submit</button>
+
+        <p id="error"></p>
     </body>
 </html>

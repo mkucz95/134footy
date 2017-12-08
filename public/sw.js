@@ -118,14 +118,14 @@ workboxSW.precache([
     { url: 'table.css' },
 
     //js files
-    { url: 'logged_in.js' },
     { url: 'permissions.js' },
     { url: 'loadData.js' },
     { url: 'homeDisplay.js' },
     { url: 'player.js' },
     { url: 'schedule.js' },
     { url: 'squad.js' },
-    { url: 'stats.js' }
+    { url: 'stats.js' },
+    { url: 'addgame.js' }
 
 ]);
 

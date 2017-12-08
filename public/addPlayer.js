@@ -4,7 +4,6 @@ function add() {
     ["fname", "lname", "profileImg", "email", "dob", "jerseynumber", "position"].forEach(function(data){
         edit[data] = document.forms["newPlayer"][data].value;
     });
-    var imag = img.replace(/^.*[\\\/]/, '');
     var captain = (document.forms["newPlayer"]["captain"].checked).toString();
     edit["pic"] = imag;
     edit["captain"] = captain;

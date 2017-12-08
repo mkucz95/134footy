@@ -4,91 +4,32 @@
 <head>
     <meta charset="utf-8" />
     <title>Login Page</title>
+    <link type="text/css" rel="stylesheet" href="nav.css">
     <script type="text/javascript" src="loadData.js"></script>
-
-    <script>
-        function login() {
-            var user = document.forms["loginform"]["username"].value;
-            var pass = document.forms["loginform"]["password"].value;
-            var username = JSON.parse(localStorage.getItem("users"));
-            for (var i = 0; i < username.length; i++) {
-                if (user == username[i]["email"]) {
-                    if (pass == username[i]["password"]) {
-                        alert("Login Successful");
-                        localStorage.setItem('logged_in', user);
-                        if (username[i]["type"] == "coach") {
-                            localStorage.setItem('permission', "true");
-                        }
-                        else {
-                            localStorage.setItem('permission', "false");
-                        }
-                        return true;
-                    }
-                }
-            }
-            alert("Not a real username");
-            return false;
-           /* if (localStorage.getItem(user)) {
-                var info = JSON.parse(localStorage.getItem(user));
-
-                if (pass == info[0]) {
-                    alert("Login Successful");
-                    localStorage.setItem('logged_in', user);
-                    if (info[1] == 'coach') {
-                        localStorage.setItem('permission', "true");
-                    }
-                    else {
-                        localStorage.setItem('permission', "false");
-                    }
-                    return true;
-                }
-                else {
-                    alert("Login Failed");
-                    return false;
-                }
-            }
-            else {
-                alert("Not a real username");
-                return false;
-            }*/
-        }
-    </script>
-
-    <style>
-        *{
-            font-family:'Helvetica Neue LT Pro';
-        }
-
-    img {
-    display: block;
-    margin: 0 auto;
-    }
-    
-    </style>
-    <script type="text/javascript" src="loadData.js"></script>
+    <style> #send, #send>p{visibility:hidden;}
+    #errorSend, #loginError{border:2px solid red;border-radius:3px;}
+    #successSend{border:2px solid green;border-radius:3px;}</style>
 <link rel="manifest" href="/manifest.json"></head>
 <body style="margin:0 0.1rem 0.1rem 0.1rem;">
+            <header id="topPage" style="margin-bottom:2rem;">
+                <h1>Team MBR</h1>
+            </header>
 
-    <h1 style="text-align:center; font-size:2.5rem">TeamWatch</h1>
-    <img src="soccer_ball.png" alt="soccer ball" />
-    <br />
-    <br />
-    <br />
-        <form name="loginform" style="text-align:center; display:block;" method="post" action="index.html" onsubmit="return login()">
             <input name="username" style="width:70%; height:2rem; padding:0px 20px" type="text" id="username" placeholder="Username" />
-            <br />
-            <a href="forgot_user.html">Forgot username?</a>
-            <br />
             <input name="password" style="width:70%; height:2rem; padding:0px 20px;" type="password" id="password" placeholder="Password" />
-            <br />
-            <a href="forgot_pass.html">Forgot password?</a>
-            <br />
-            <br />
-            <input style="font-size:1rem;  width:6.5rem; padding:.6rem; margin:1rem; background-color:dodgerblue; color:white; border-color:dodgerblue" type="submit" value="Log In"/>
-            <br />
-        </form>
-    <form name="signupform"  style="text-align:center; display:block;" method="post" action="signup.html">
-        <button style="font-size:1rem; width:6.5rem; padding:.6rem; margin:1rem; background-color:dodgerblue; color:white; border-color:dodgerblue" formaction="signup.html">New User</button>
-    </form>
+            <button id="login" style="display:block; margin-top:0.2rem;">Log In</button>
+            <button id="forgot" style="display:block; margin-top:2rem;">Forgot Login</button>
+
+            <div id="send">
+                <input name="email" style="width:70%; height:2rem; padding:0px 20px" type="email" id="email" placeholder="email"/>            
+                <button>Send Password</button>
+                <p id="successSend">Password Sent to Email</p>
+                <p id="errorSend">Error In Sending Password- Check Email Validity</p>
+            </div>
+
+            <p id="loginError">Login Error - Double Check Login Information</p>
+
+        <button id="signup">New User</button>
+        <script src="login.js"></script>
 </body>
 </html>
