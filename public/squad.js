@@ -1,4 +1,5 @@
-import {auth, database} from './db.js';
+import database from './db';
+console.log("test");
 function buildHtml() {
     var today_date = new Date();
     var today_year = today_date.getFullYear();

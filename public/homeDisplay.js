@@ -1,5 +1,4 @@
-
-
+import database from './db.js';
 const team = JSON.parse(localStorage.getItem("team"));
 console.log(team);
 var overallStats = {
