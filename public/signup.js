@@ -1,4 +1,4 @@
-import {auth, database} from './db.js';
+import { auth , database } from './db.js';
 
 function userExists(email){
     var users = database.ref('users/');
@@ -13,12 +13,19 @@ function userExists(email){
 
 function validate(){
     console.log("validating");
-    var fname = document.getElementsByName["fname"].value; 
-    var lname = document.getElementsByName["lname"].value;
-    var email = document.getElementsByName["email"].value;
-    var pass = document.getElementsByName["password"].value;
-    var passCheck = document.getElementsByName["confirmPassword"].value;
-    var type = document.getElementsByName["who"].value;
+    ["fname", "lname", "email", "password", "confirmPassword", "who"].forEach(e=>{
+        if(e == null){printError("wrong form input");return false;}
+    });
+    var fname = document.getElementById("fname").value; 
+    console.log(document.getElementById("fname").value);    
+    var lname = document.getElementById("lname").value;
+    console.log(document.getElementById("email").value);
+    var email = document.getElementById("email").value;
+    var pass = document.getElementById("password").value;
+    var passCheck  = document.getElementById("confirmPassword").value;
+    var type = document.getElementsByName("who")[0].value;
+    console.log(document.getElementsByName("who")[0].value);    
+
 
     var status = true;
     if(pass !== passCheck){
@@ -32,19 +39,23 @@ function validate(){
         status=false;
     }
     if(status){save(fname, lname, email, pass, type);}
+    return status;
 }
     function displayError(message){
         document.querySelector("#error").innerHTML = message;
     }
     function addExtra(uid, userData){
+        console.log("addingUser");        
         database.ref('users/'+uid).set({
             email: userData["email"],
             fname: userData["fname"],
             lname:userData["lname"],
             type:userData["type"]
         });
+        window.location.href="index.html";
     }
     function save(fname,lname,email,pass,type){
+        console.log("save user");        
         var userData = {
             "fname": fname,
             "lname":lname,
@@ -66,9 +77,15 @@ function validate(){
         });
 
         auth.onAuthStateChanged(firebaseUser => {
+            console.log(firebaseUser)
             if(firebaseUser){
                 console.log(firebaseUser);
                 addExtra(firebaseUser.uid, userData);
             }else{
                 console.error('signup failed');
-}});console.log("saved user");}
+    }});
+}
+
+window.onload=function(){
+    document.getElementById("submit").onclick = validate;
+}

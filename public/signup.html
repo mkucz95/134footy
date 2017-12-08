@@ -5,27 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" rel="stylesheet" href="nav.css"> 
     <link type="text/css" rel="stylesheet" href="form.css"> 
-    
     <title>Sign Up</title>
-    <script src="signup.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
     <link rel="manifest" href="/manifest.json"></head>
     <body style="margin:0 0.1rem 0.1rem 0.1rem;">
+            <script type="module" src="signup.js"></script>                    
         <header id="topPage">
             <h1>Sign Up</h1>
         </header>
-
-            <label class="info" for="username">Username (email):</label><input name="email" type="email" id="username" required>
-            <label class="info" for="fname">First Name:</label><input name="fname" type="text" id="fname" required>
-            <label class="info" for="lname">Last Name:</label><input name="lname" type="text" id="lname" required>
-            <label class="info" for="password">Password:</label><input name="password" type="password" id="password" required>
-            <label class="info" for="confirm">Confirm Password:</label><input name="confirmPassword" type="password" id="confirm" required> 
+        <div style="display:grid;">
+            <label>Username (email):<input name="email" type="email" id="email"></label>
+            <label>First Name:<input name="fname" type="text" id="fname"></label>
+            <label>Last Name:<input name="lname" type="text" id="lname"></label>
+            <label>Password:<input name="password" type="password" id="password"></label>
+            <label>Confirm Password:<input name="confirmPassword" type="password" id="confirmPassword"></label>
 
            <h2>Who are you?</h2> 
            <label><input type="radio" name="who" id="player" value="player" required>Player</label> 
            <label><input type="radio" name="who" id="parent" value="parent">Parent</label> 
            <label><input type="radio" name="who" id="coach" value="coach">Coach</label> 
-            <button type="submit">Submit</button>
-
+           <button id="submit">Submit</button>
+        </div>
         <p id="error"></p>
     </body>
 </html>

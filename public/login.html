@@ -5,39 +5,13 @@
     <meta charset="utf-8" />
     <title>Login Page</title>
     <link type="text/css" rel="stylesheet" href="nav.css">
+    <link type="text/css" rel="stylesheet" href="form.css">
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
     <style> #send, #send>p{visibility:hidden;}
     #errorSend, #loginError{border:2px solid red;border-radius:3px;}
     #successSend{border:2px solid green;border-radius:3px;}</style>
-    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-    <script type="module">
-        /*import db from './bd.js';
-        
-        db.ref('users').remove();
-        db.ref('users').push().set({
-                "fname":"Mati",
-                "lname":"Kucz",
-                "email": "mkucz@ucsd.edu",
-                "type":"coach",
-                "password":"secret"
-            });
-        db.ref('users').push().set({
-                "fname":"Raymond",
-                "lname":"Ho",
-                "email": "r4ho@ucsd.edu",
-                "type":"parent",
-                "password":"pizza"
-            });
-        */
-    /*    var user = db.ref('users');
-        user.once('value').then(x => {
-            x.forEach(y => {
-                var fname = db.ref('users/' + y.key + '/fname');
-                fname.once('value', function(snapshot) {
-                    alert(snapshot.val());
-                });
-            })
-        });  */
-    </script>
 <link rel="manifest" href="/manifest.json"></head>
 <body style="margin:0 0.1rem 0.1rem 0.1rem;">
             <header id="topPage" style="margin-bottom:2rem;">

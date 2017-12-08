@@ -28,12 +28,19 @@ forgotPass.addEventListener('click', e=>{
    }).catch(err => document.getElementById("errorSend").style.visibility='visible');
 });
 
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function(){
+    console.log("persistence LOCAL");
+}).catch(function(){
+    console.error("persistence setting ERR");
+});
+//explicit sign out needed to clear persistence state
+
 auth.onAuthStateChanged(firebaseUser => {
     if(firebaseUser){
         console.log(firebaseUser);
+        window.location.href="index.html";
     }else{
         console.log('logged out');
-        window.location = 'login.html';
     }
 });
 
