@@ -34,7 +34,11 @@ const cacheFiles = [
     'schedule.js',
     'squad.js',
     'stats.js',
-    'sw.js'
+    'sw.js',
+    'db.js',
+
+    //manifest
+    'manifest.json',
 ];
 
 //Installing ServiceWorker
