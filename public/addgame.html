@@ -20,21 +20,18 @@
      </nav>
     </header>
     <h2 style="text-align:center">Add Game</h2>
-            <label for="opponent">Opponent Team:</label>
-                <input type="text" id="opponent" name="opponent" placeholder="Opponent Team" />
-            <label for="date">Date:</label>
-                <input type="date" id="date" name="date"/>
-            <label for="time">Time:</label>
-                <input type="time" id="time" name="time"/>        
-            <label for="address">Location:</label>
-                <input type="text" id="address" name="address" placeholder="Address" />
-            <label>Status:</label>
+    <div style="display:grid;">
+            <label for="opponent">Opponent Team:<input type="text" id="opponent" name="opponent" placeholder="Opponent Team" /></label>
+            <label for="date">Date:<input type="date" id="date" name="date"/></label>
+            <label for="time">Time:<input type="time" id="time" name="time"/></label>
+            <label for="address">Location:<input type="text" id="address" name="address" placeholder="Address"/></label>
+            <aside>Status:</aside>
             <label><input type="radio" id="home" name="status" value="sethome">Home</label>
             <label><input type="radio" id="away" name="status" value="setaway">Away</label>
-            <br>
-            <label>Type of Game:</label>
+            <aside>Type of Game:</aside>
             <label><input type="radio" id="match" name="gametype" value="match" />Match</label>
             <label><input type="radio" id="practice" name="gametype" value="practice"/>Practice</label>
+    </div>
         <button onclick="saveGame()">Add Game</button>
 </body>
 </html>

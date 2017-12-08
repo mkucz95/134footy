@@ -1,4 +1,4 @@
-import {auth, database} from './db.js';
+import {auth, database} from './db';
 
     var currentUser = auth.currentUser;   
     console.log(currentUser);

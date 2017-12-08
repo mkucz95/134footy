@@ -1,4 +1,4 @@
-import {auth, database} from './db.js';
+import {auth, database} from './db';
 
 const team = JSON.parse(localStorage.getItem("team"));
 var overallStats = {
@@ -7,15 +7,6 @@ var overallStats = {
     'tie':0,
     'goalsFor':0,
     'goalsAgainst':0
-}
-
-function logoutUser(){
-    console.log("logout");
-    auth.signOut().then(function(){
-        window.location = "login.html";        
-    }).catch(function(error){
-        console.error("signout unsuccessful");
-    })
 }
 var statsArr = ['win','loss','tie','goalsFor','goalsAgainst'];
 window.onload = function(){
@@ -53,7 +44,6 @@ function getCurrDate(){
     var day = now.getDate();
     return year+'-'+month+'-'+day;
 }
-
 function findNextGame(){
     const today = Date.parse(getCurrDate()).value;
     for(let i=0;i<team.schedule.length-1; i++){
@@ -68,7 +58,6 @@ function findNextGame(){
             }
     }return -1;
 }
-
 function displayNextGame(){
     const nextGame = findNextGame(); 
     if(nextGame != -1){

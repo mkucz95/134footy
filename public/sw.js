@@ -10,8 +10,6 @@ const cacheFiles = [
     'addplayer.html',
     'editGame.html',
     'editplayer.html',
-    'forgot_pass.html',
-    'forgot_user.html',
     'signup.html',
     'stats.html',
     'viewSchedule.html',
@@ -36,9 +34,10 @@ const cacheFiles = [
     'stats.js',
     'sw.js',
     'db.js',
+    'logout.js',
 
     //manifest
-    'manifest.json',
+    'manifest.json'
 ];
 
 //Installing ServiceWorker
@@ -106,8 +105,6 @@ workboxSW.precache([
     { url: 'addplayer.html' },
     { url: 'editGame.html' },
     { url: 'editplayer.html' },
-    { url: 'forgot_pass.html' },
-    { url: 'forgot_user.html' },
     { url: 'signup.html' },
     { url: 'stats.html' },
     { url: 'viewSchedule.html' },
@@ -129,7 +126,8 @@ workboxSW.precache([
     { url: 'schedule.js' },
     { url: 'squad.js' },
     { url: 'stats.js' },
-    { url: 'addgame.js' }
+    { url: 'addgame.js' },
+    {url:'logout.js'}
 
 ]);
 

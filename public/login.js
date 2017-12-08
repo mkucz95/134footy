@@ -1,11 +1,8 @@
-import {auth, database} from './db.js';
+import {auth, database} from './db';
 const signup = document.querySelector('#signup');
 const loginDoc = document.querySelector('#login');
 const forgotInfo = document.querySelector('#forgot');
 const forgotPass = document.querySelector('#send>button');
-
-auth.Auth.Persistence.LOCAL;
-//explicit sign out needed to clear persistence state
 
 signup.addEventListener('click', e=>{
    window.location = 'signup.html';

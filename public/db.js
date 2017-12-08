@@ -11,4 +11,11 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var auth = firebase.auth();
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(function(){
+    console.log("persistence LOCAL");
+}).catch(function(){
+    console.error("persistence setting ERR");
+});
+//explicit sign out needed to clear persistence state
+
 export{auth,database};
