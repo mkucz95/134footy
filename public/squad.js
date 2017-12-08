@@ -1,4 +1,4 @@
-import database from './db';
+import database from './bd.js';
 console.log("test");
 function buildHtml() {
     var today_date = new Date();
