@@ -8,6 +8,9 @@ h1 {
     font-weight: 500;
     line-height: 1.2;
 }
+.permission{
+    visibility: hidden;
+}
 
 #signout {
     color: #006eff;
