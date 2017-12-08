@@ -1,0 +1,26 @@
+{
+    "short_name":"Footy134",
+    "name": "Footy134 - BThai, RHo, MKucz",
+    "icons":[
+        {
+            "src":"soccer_ball1.png",
+            "type":"image/png",
+            "sizes":"48x48"
+        },
+        {
+            "src":"soccer_ball2.png",
+            "type":"image/png",
+            "sizes":"96x96"
+        },
+        {
+            "src":"soccer_ball3.png",
+            "type":"image/png",
+            "sizes":"192x192"
+        }
+    ],
+    "start_url": "index.html?launcher=true",
+    "background_color":"#006EFF",
+    "display":"standalone",
+    "orientation":"landscape",
+    "theme_color":"#006EFF"
+}
