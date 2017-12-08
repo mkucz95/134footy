@@ -1,43 +1,79 @@
 ﻿<!DOCTYPE html>
-<html>
-    <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
-            <link type="text/css" rel="stylesheet" href="nav.css">
-            <link type="text/css" rel="stylesheet" href="form.css">            
-            <title>Add Player</title>
-        <script type="text/javascript" src="permission.js"></script>
-        <script src="addPlayer.js"></script>
-    <link rel="manifest" href="/manifest.json"></head>
-    <body style="margin:0 0.1rem 0.1rem 0.1rem;">
-            <header id="topPage">
-                    <h1>Team MBR</h1>
-                        <nav>
-                            <a href="index.html">Home</a>
-                            <a href="viewSchedule.html">Schedule</a>
-                            <a href="viewSquad.html">Squad</a>
-                        </nav>
-                    </header>
-        <img class="media" id="chosenPic" src="" alt="upload image" style="max-width:10%;">
-        <h2 class="media">Add Player</h2>
-        <form method="post" name="newPlayer" action="viewSquad.html" onsubmit="return add()">
-            <input type="file" name="profileImg" accept="image/*" onchange=""><br>                
-            <label for="fname">First Name:</label> 
-            <input name="fname" type="text" id="fname" required><br>
-            <label for="lname">Last Name</label>
-            <input name="lname" type="text" id="lname" required><br>
-            <label for="playerEmail">Email</label>
-            <input name="email" type="email" id="playerEmail" required><br>
-            <label for="dob">Date of Birth</label>
-            <input name="dob" type="date" id="dob" required><br>
-            <label for="jersey">Jersey Number</label>
-            <input name="jerseynumber" type="number" id="jersey" min="0" max="99" required><br>
-            <label for="position">Position</label>
-            <input name="position" type="text" id="position" maxlength="15"><br>
-            <label for="captain">Captain:</label>
-            <input name="captain" id="captain" type="checkbox" value="yes"><br>
-            <input type="submit" value="Add Player">
-        </form>
-    </body>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link type="text/css" rel="stylesheet" href="nav.css">
+<link type="text/css" rel="stylesheet" href="form.css">            
+<title>Add Player</title>
+<script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+<script type="module">
+    import db from './db.js'
+    function add(){
+        var datab = db.ref('/team/players').push();
+        var key = datab.key;
+    
+        datab.set({
+            "fname": document.forms["newPlayer"]["fname"].value,
+            "lname": document.forms["newPlayer"]["lname"].value,
+            "profileImg": document.forms["newPlayer"]["profileImg"].value,
+            "email": document.forms["newPlayer"]["email"].value,
+            "dob": document.forms["newPlayer"]["dob"].value,
+            "jerseynumber": document.forms["newPlayer"]["jerseynumber"].value,
+            "position": document.forms["newPlayer"]["position"].value,
+            "captain": (document.forms["newPlayer"]["captain"].checked).toString(),
+            "starter": "false"
+        });
+
+    db.ref('/team/players/' + key + '/stats').set({
+    'assist': 0,
+    'goal': 0,
+    'shot': 0,
+    'onGoal': 0,
+    'foul': 0,
+    'red': 0,
+    'yellow': 0,
+    'corner': 0,
+    'gKick': 0,
+    'throw': 0,
+    'pen': 0
+    });
+
+ }
+</script>
+<script type="text/javascript" src="permission.js"></script>
+<!--<script src="addPlayer.js"></script>-->
+<link rel="manifest" href="/manifest.json">
+</head>
+<body style="margin:0 0.1rem 0.1rem 0.1rem;">
+<header id="topPage">
+    <h1>Team MBR</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="viewSchedule.html">Schedule</a>
+        <a href="viewSquad.html">Squad</a>
+    </nav>
+</header>
+<img class="media" id="chosenPic" src="" alt="upload image" style="max-width:10%;">
+<h2 class="media">Add Player</h2>
+<form method="post" name="newPlayer" action="viewSquad.html" onsubmit="return add()">
+    <input type="file" name="profileImg" accept="image/*" onchange=""><br>                
+    <label for="fname">First Name:</label> 
+    <input name="fname" type="text" id="fname" required><br>
+    <label for="lname">Last Name</label>
+    <input name="lname" type="text" id="lname" required><br>
+    <label for="playerEmail">Email</label>
+    <input name="email" type="email" id="playerEmail" required><br>
+    <label for="dob">Date of Birth</label>
+    <input name="dob" type="date" id="dob" required><br>
+    <label for="jersey">Jersey Number</label>
+    <input name="jerseynumber" type="number" id="jersey" min="0" max="99" required><br>
+    <label for="position">Position</label>
+    <input name="position" type="text" id="position" maxlength="15"><br>
+    <label for="captain">Captain:</label>
+    <input name="captain" id="captain" type="checkbox" value="yes"><br>
+    <input type="submit" value="Add Player">
+</form>
+</body>
 </html>
