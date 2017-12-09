@@ -11,7 +11,7 @@
 <script type="module">
     import * as firebase from './db.js';
     var db = firebase.database;
-    
+
     const url = window.location.href;
     document.querySelector("#editButton").onclick=function(){window.location.href=`editplayer.html?id=${view}`};
 
@@ -38,7 +38,6 @@
         });
    }
     window.onload = displayPlayer;
-
 </script>
     <script type="module" src="permission.js"></script>    
 <link rel="manifest" href="/manifest.json"></head>
