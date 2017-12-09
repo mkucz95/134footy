@@ -1,9 +1,5 @@
 import{auth, database} from './db.js';
 
-var homeTeam = ["homegoal", "homeshot", "homeonGoal", "homefoul", "homered", "homeyellow", "homecorner", "homegKick", "homethrow", "homepen"];
-var awayTeam = ["awaygoal", "awayshot", "awayonGoal", "awayfoul", "awayred", "awayyellow", "awaycorner", "awaygKick", "awaythrow","awaypen"];
-
-var increment;
 const url = window.location.href;
 const id = parseInt(url.substr(url.length-1,1));
 const todayDate = getCurrDate();
@@ -11,12 +7,6 @@ const todayDate = getCurrDate();
 var team;
 var match;
 var matchDate;
-   
-            var sendData = {
-                "action":0,
-                "assign":0,
-                "teamAssign":0
-            };
 
 window.onload = function(){
     database.ref('team/').once("value").then(s=>{team = s.val();
@@ -27,6 +17,7 @@ window.onload = function(){
     updateHeaders(id);
     statsAllowed();
     });
+    document.getElementById("saveStat").onclick = save;    
 }     
 
 function statsAllowed(){
@@ -36,17 +27,18 @@ function statsAllowed(){
     }
 }
 
-function save(element){
-    let data ={'number':0,'stat':0,'team':0,'action':0};
-
-    ['number', 'stat', 'team', 'action'].forEach(property => {
-        let selector = "#form-"+property;
-        console.log(document.querySelector(selector));
-        data[property] = document.querySelector(selector).value;
+function save(){
+    let data = {'number':0,'stat':0,'team':0,'action':0};
+    ['number', 'stat', 'team'].forEach(property => {
+        console.log(document.querySelector(`#form-${property}`));
+        data[property] = document.querySelector(`#form-${property}`).value;
     });
+    if(document.querySelector("#form-action").value==="add"){
+        data["action"]=1;
+    }else{data["action"]=-1}
 
     console.log(data);
-    associateToPlayer(data);
+    if(data["team"] === "home" && data["number"]!= -1){ console.log("home");associateToPlayer(data);}
     associateToTeam(data);
     refresh(data['stat'], data['team']);
 }
@@ -71,33 +63,44 @@ function getCurrDate(){
 
 function associateToPlayer(data){
     let type=data['stat'];
+    var counter=0;
+    var id=0;
+    let newPlayerStats;
 
     team.players.forEach(function(player){
         if(player.jerseynumber == data['number']){
-            player.stats[type] += data['action'];
- 
-            console.log(player.stats);
-            
-            localStorage.setItem("team", JSON.stringify(team));
-            return;
+            newPlayerStats = player.stats;
+            newPlayerStats[type] = data['action'] + parseInt(newPlayerStats[type]);
+            console.log(newPlayerStats);
+            id=counter;
         }
+        counter++;
     });
+    database.ref(`team/players/${id}/stats`).set(newPlayerStats);
  }
 
  function associateToTeam(data){
      let action;
-     if(data['action'] === "add") action = 1;
-     else action=-1;
+     var newTeamStats;
+     let type='';
 
      /*needed for full functionality TODO*/
          //if(team.schedule[id].type === "match" && team.schedule[id].date == todayDate){
      if(team.schedule[id].type === "match"){
-            if(data['team'] ==="home") team.schedule[id].statsFor[data['stat']] += action;
-             else team.schedule[id].statsAgainst[data['stat']] += action;
+            if(data['team'] ==="home"){
+                newTeamStats = team.schedule[id].statsFor;                
+                team.schedule[id].statsFor[data['stat']] = data["action"] + parseInt(team.schedule[id].statsFor[data['stat']]);
+                type='statsFor';
+            }
+             else{
+                 newTeamStats = team.schedule[id].statsAgainst;
+                 team.schedule[id].statsAgainst[data['stat']] = data["action"] + parseInt(team.schedule[id].statsFor[data['stat']]);
+                 type='statsAgainst';                 
+                } 
          }
  
          console.log(team.schedule[id]);
-             localStorage.setItem("team", JSON.stringify(team));
+         database.ref(`team/schedule/${id}/${type}`).set(newTeamStats);
              return;
          }
  
@@ -112,16 +115,14 @@ function associateToPlayer(data){
 
         function refreshAll(){
             console.log("refreshAll");
-            ["goal", "shot", "onGoal", "foul", "red", "yellow", "corner", "gKick", "throw", "pen"].forEach(function(stat){
-                console.log(stat);                
+            ["goal", "shot", "onGoal", "foul", "red", "yellow", "corner", "gKick", "throw", "pen"].forEach(function(stat){           
                 refresh(stat, "home");
                 refresh(stat, "away");
             });
         }
 
         function refresh(stat, teamType){
-            let selector = "#"+teamType+stat;
-            let el = document.querySelector(selector);
+            let el = document.querySelector(`#${teamType}${stat}`);
 
             if(teamType === "home"){ 
                 database.ref(`team/schedule/${id}/statsFor/${stat}`).once("value").then(s=>{el.innerHTML = s.val();});                   
