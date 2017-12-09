@@ -1,6 +1,5 @@
 import {auth,database} from'./db.js';
 auth.onAuthStateChanged(firebaseUser => {
-    console.log(firebaseUser.uid);
     if(firebaseUser){
         database.ref(`users/${firebaseUser.uid}`).once("value").then(s=>
             {

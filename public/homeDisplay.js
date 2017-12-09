@@ -33,16 +33,18 @@ function getCurrDate(){
     return year+'-'+month+'-'+day;
 }
 function findNextGame(){
-    const today = Date.parse(getCurrDate()).value;
-    for(let i=0;i<team.schedule.length-1; i++){
-        let eventDate = Date.parse(team.schedule[i].date);
-            if(eventDate>=today){
-                console.log("event id: "+i);
-                if(eventDate = today){
-                    document.querySelector("#gamestats").style.visibility='visible';
-                }return i;                
-            }
-    }return -1;
+    const today = Date.parse(getCurrDate());
+    var counter=0;
+    team.schedule.forEach(match=>{
+        if(counter==team.schedule.length)return-1;
+        let eventDate = Date.parse(match.date);
+        if(eventDate>=today){
+            if(eventDate == today){
+                document.querySelector("#gamestats").style.visibility='visible';
+                return counter;                                    
+            }return counter+1;
+        } counter++;
+    });return -1;
 }
 function displayNextGame(){
     const nextGame = findNextGame(); 
