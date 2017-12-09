@@ -69,13 +69,13 @@ self.addEventListener('activate', function (e) {
 });
 
 //Getting cache responses and returning them
-self.addEventListener('fetch', function (e) {
-    e.respondWith(
-      caches.match(e.request).then(function (response) {
+self.addEventListener('fetch', function (event) {
+    event.respondWith(
+      caches.match(event.request).then(function (response) {
           if (response) {
               return response;
           }
-          var fetchReq = e.request.clone();
+          var fetchReq = event.request.clone();
           return fetch(fetchReq).then(
               function(response){
                   if(!response || response.status !== 200 || response.type !== 'basic') {
@@ -83,7 +83,7 @@ self.addEventListener('fetch', function (e) {
                   }
                   var responseToCache = response.clone();
                   caches.open(cacheID).then(function(cache){
-                      cache.put(e.request, responseToCache);
+                      cache.put(event.request, responseToCache);
                   });
                   return response;
               }
