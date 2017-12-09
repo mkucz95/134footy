@@ -1,5 +1,19 @@
-import {auth,database} from './db.js'
-var db = database;
+/*import {auth,database} from './db.js'
+var db = database;*/
+
+var config = {
+    apiKey: "AIzaSyCep4diOeZnGMpQIyeaO0RGCju42EKTkW4",
+    authDomain: "footy-b0652.firebaseapp.com",
+    databaseURL: "https://footy-b0652.firebaseio.com",
+    projectId: "footy-b0652",
+    storageBucket: "footy-b0652.appspot.com",
+    messagingSenderId: "141339264361"
+};
+firebase.initializeApp(config);
+var db = firebase.database();
+
+
+
 buildHtml();
 function edit(id) {
     localStorage.setItem('editGame', id);
@@ -21,22 +35,20 @@ function buildHtml() {
             fname.once('value', function (snapshot) {
                 var event = snapshot.val();
                 var el;
-                if(event.type == "match") {
-                    el=document.querySelector("#matches");
-                }else {
-                    el=document.querySelector("#practices");
+                if (event.type == "match") {
+                    el = document.querySelector("#matches");
+                } else {
+                    el = document.querySelector("#practices");
                 }
 
                 var newEl = document.createElement('tr');
-                newEl.id = counter;
-                newEl.innerHTML = `<td>${event.location} @ ${event.address}</td><td id="${counter}" onclick="view(this.id)"> ${event.date} at ${event.time}</td> <td> ${event.opponent}</td><td class="edit permission" id="${counter}" onclick="edit(this.id)">edit</td>`;
-                el.insertAdjacentElement('beforeend',newEl);
-                newEl.onclick = function(){edit(this.id)};
+                newEl.innerHTML = `<td>${event.location} @ ${event.address}</td><td id="${counter}" onclick="view(this.id)"> ${event.date} at ${event.time}</td> <td> ${event.opponent}</td><td id="${counter}" onclick="edit(this.id)">edit</td>`;
+                el.insertAdjacentElement('beforeend', newEl);
                 counter++;
 
 
             });
-        })
+        });
     });
 
 
@@ -65,3 +77,4 @@ function buildHtml() {
          practices.innerHTML = practiceErr;        
      }*/
 }
+
