@@ -1,6 +1,6 @@
-alert("BB");
-/*import {auth,database} from './db.js'
-var db = database;*/
+import {auth,database} from './db.js'
+var db = database;
+/*
 var config = {
     apiKey: "AIzaSyCep4diOeZnGMpQIyeaO0RGCju42EKTkW4",
     authDomain: "footy-b0652.firebaseapp.com",
@@ -11,13 +11,14 @@ var config = {
 };
 firebase.initializeApp(config);
 var db = firebase.database();
-
+*/
 
 function add() {
 
     db.ref('team/players').limitToLast(1).once('value').then(x => {
         x.forEach(y => {
             var newKey = (parseInt(y.key) + 1).toString();
+
 
             db.ref('/team/players/' + newKey).set({
                 "fname": document.forms["newPlayer"]["fname"].value,
@@ -44,9 +45,12 @@ function add() {
                 'throw': 0,
                 'pen': 0
             });
-
         });
     });
+}
+
+window.onload=function(){
+    document.getElementById("addPlayer").onclick = add;
 }
 /*function add() {
     var team = JSON.parse(localStorage.getItem("team"));

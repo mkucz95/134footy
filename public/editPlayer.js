@@ -15,7 +15,6 @@ const url = window.location.href;
 const view = parseInt(url.substr(url.length - 1, 1));
 
 function displayPlayer() {
-    alert("hello");
     db.ref('team/players/' + url.substr(url.length - 1, 1)).on('value', function (snapshot) {
         document.getElementById("position").placeholder = snapshot.val().position;
         document.getElementById("jerseynumber").placeholder = snapshot.val().jerseynumber;

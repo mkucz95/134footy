@@ -2,7 +2,7 @@ import {auth, database } from './db.js';
 var db = database;
 
 function saveGame() {
-    alert("hello");
+
     db.ref('team/schedule').limitToLast(1).once('value').then(x => {
         x.forEach(y => {
             var newKey = (parseInt(y.key) + 1).toString();
@@ -22,7 +22,6 @@ function saveGame() {
                 type = "practice";
             }
 
-            alert(document.querySelector("#opponent").value);
             db.ref('/team/schedule/' + newKey).set({
                 "opponent": document.querySelector("#opponent").value,
                 "date": document.querySelector("#date").value,
@@ -32,38 +31,39 @@ function saveGame() {
                 "type": type
             });
 
-            db.ref('/team/schedule/' + newKey + '/statsFor').set({
-                'assist': 0,
-                'goal': 0,
-                'shot': 0,
-                'onGoal': 0,
-                'foul': 0,
-                'red': 0,
-                'yellow': 0,
-                'corner': 0,
-                'gKick': 0,
-                'throw': 0,
-                'pen': 0
-            });
-            db.ref('/team/schedule/' + newKey + '/statsAgainst').set({
-                'assist': 0,
-                'goal': 0,
-                'shot': 0,
-                'onGoal': 0,
-                'foul': 0,
-                'red': 0,
-                'yellow': 0,
-                'corner': 0,
-                'gKick': 0,
-                'throw': 0,
-                'pen': 0
-            });
-
+            if(type == 'match'){
+                db.ref('/team/schedule/' + newKey + '/statsFor').set({
+                    'assist': 0,
+                    'goal': 0,
+                    'shot': 0,
+                    'onGoal': 0,
+                    'foul': 0,
+                    'red': 0,
+                    'yellow': 0,
+                    'corner': 0,
+                    'gKick': 0,
+                    'throw': 0,
+                    'pen': 0
+                });
+                db.ref('/team/schedule/' + newKey + '/statsAgainst').set({
+                    'assist': 0,
+                    'goal': 0,
+                    'shot': 0,
+                    'onGoal': 0,
+                    'foul': 0,
+                    'red': 0,
+                    'yellow': 0,
+                    'corner': 0,
+                    'gKick': 0,
+                    'throw': 0,
+                    'pen': 0
+                });
+            }
 
 
         });
     });
-    alert("done");
+
     window.location.href = "viewSchedule.html";
 
 
@@ -96,4 +96,8 @@ function saveGame() {
     localStorage.setItem("team", JSON.stringify(team));
 
     window.location = "viewSchedule.html";*/
+}
+
+window.onload=function(){
+    document.getElementById("saveGame").onclick = saveGame;
 }
