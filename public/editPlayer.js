@@ -15,10 +15,9 @@ var db = database;
 
 
 const url = window.location.href;
-const view = parseInt(url.substr(url.length - 1, 1));
+const view = parseInt((url.substr(url.length - 10, url.length)).split("=")[1]);
 
-
-    db.ref('team/players/' + url.substr(url.length - 1, 1)).on('value', function (snapshot) {
+    db.ref('/team/players/' + view).on('value', function (snapshot) {
         document.getElementById("position").placeholder = snapshot.val().position;
         document.getElementById("jerseynumber").placeholder = snapshot.val().jerseynumber;
         document.getElementById("dob").placeholder = snapshot.val().dob;
@@ -50,8 +49,8 @@ const view = parseInt(url.substr(url.length - 1, 1));
     document.getElementById("starter").checked = (edit.starter == 'true');*/
 
 function change() {
-    db.ref('team/players/' + url.substr(url.length - 1, 1) + '/stats').on('value', function (snapshot) {
-        db.ref('team/players/' + url.substr(url.length - 1, 1)).set({
+    db.ref('/team/players/' + view + '/stats').on('value', function (snapshot) {
+        db.ref('/team/players/' + url.substr(url.length - 1, 1)).set({
             "fname": document.forms["editPlayer"]["fname"].value,
             "lname": document.forms["editPlayer"]["lname"].value,
             "profileImg": document.forms["editPlayer"]["profileImg"].value,
@@ -83,7 +82,7 @@ function confirmDelete() {
 }
 function delplayer() {
 
-    db.ref('team/players/' + url.substr(url.length - 1, 1)).set(null);
+    db.ref('/team/players/' + view).set(null);
     /*var team = JSON.parse(localStorage.getItem("team"));
     team.players.splice(view, 1);
     localStorage.setItem("team", JSON.stringify(team));*/

@@ -6,9 +6,9 @@ function buildHtml() {
     var today_day = today_date.getDate();
     var tBody = document.querySelector('#template');
 
-    database.ref('team/players/').once('value').then(x => {
+    database.ref('/team/players/').once('value').then(x => {
         x.forEach(y => {
-            database.ref('team/players/' + y.key).on('value', function (snapshot) {
+            database.ref('/team/players/' + y.key).on('value', function (snapshot) {
                 let name = snapshot.val().fname + " " + snapshot.val().lname;
                 let position = snapshot.val().position;
                 let jerseynum = snapshot.val().jerseynumber;
