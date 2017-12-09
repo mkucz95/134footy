@@ -1,3 +1,4 @@
+/*
 var config = {
     apiKey: "AIzaSyCep4diOeZnGMpQIyeaO0RGCju42EKTkW4",
     authDomain: "footy-b0652.firebaseapp.com",
@@ -8,16 +9,14 @@ var config = {
 };
 firebase.initializeApp(config);
 var db = firebase.database();
+*/
+import {auth, database} from './db.js';
+var db = database;
 
-alert("starting");
 
-
-
-function loadFields() {
-    alert("hello");
     var gameId = localStorage.getItem("editGame");
-    alert(gameId);
-    db.ref('team/schedule/' + gameId).on('value', function (snapshot) {
+
+    db.ref('/team/schedule/' + gameId).on('value', function (snapshot) {
 
         document.getElementById("opponent").value = snapshot.val().opponent;
         document.getElementById("date").value = snapshot.val().date;
@@ -42,7 +41,7 @@ function loadFields() {
         }
     });
 
-    alert("done");
+
     /*
     var team = JSON.parse(localStorage.getItem("team"));
     var gameId = localStorage.getItem("editGame");
@@ -64,30 +63,62 @@ function loadFields() {
     }else{
         document.getElementById("practice").checked = true;
     }*/
-}
-window.onload = loadFields;
 
 function saveEvent() {
-    alert("hello");
     var gameId = localStorage.getItem("editGame");
-    var updates = {};
-    updates['/team/schedule/' + gameId + '/opponent'] = document.getElementById("opponent").value;
-    updates['/team/schedule/' + gameId + '/date'] = document.getElementById("date").value;
-    updates['/team/schedule/' + gameId + '/time'] = document.getElementById("time").value;
-    updates['/team/schedule/' + gameId + '/address'] = document.getElementById("address").value;
-    if (document.getElementById("home").checked) {
-        updates['/team/schedule/' + gameId + '/location'] = "home";
-    } else {
-        updates['/team/schedule/' + gameId + '/location'] = "away";
-    }
-    if (document.getElementById("match").checked) {
-        updates['/team/schedule/' + gameId + '/type'] = "match";
-    } else {
-        updates['/team/schedule/' + gameId + '/type'] = "practice";
-    }
-    db.ref().update(updates);
-    alert("done");
+    db.ref('/team/schedule/' + gameId + '/type').on('value', function (snapshot) {
 
+        var updates = {};
+        updates['/team/schedule/' + gameId + '/opponent'] = document.getElementById("opponent").value;
+        updates['/team/schedule/' + gameId + '/date'] = document.getElementById("date").value;
+        updates['/team/schedule/' + gameId + '/time'] = document.getElementById("time").value;
+        updates['/team/schedule/' + gameId + '/address'] = document.getElementById("address").value;
+        if (document.getElementById("home").checked) {
+            updates['/team/schedule/' + gameId + '/location'] = "home";
+        } else {
+            updates['/team/schedule/' + gameId + '/location'] = "away";
+        }
+        if (document.getElementById("match").checked) {
+            updates['/team/schedule/' + gameId + '/type'] = "match";
+            if (snapshot.val() != "match") {
+                updates['/team/schedule/' + gameId + '/statsFor'] = {
+                    'assist': 0,
+                    'goal': 0,
+                    'shot': 0,
+                    'onGoal': 0,
+                    'foul': 0,
+                    'red': 0,
+                    'yellow': 0,
+                    'corner': 0,
+                    'gKick': 0,
+                    'throw': 0,
+                    'pen': 0
+                }
+                updates['/team/schedule/' + gameId + '/statsAgainst'] = {
+                    'assist': 0,
+                    'goal': 0,
+                    'shot': 0,
+                    'onGoal': 0,
+                    'foul': 0,
+                    'red': 0,
+                    'yellow': 0,
+                    'corner': 0,
+                    'gKick': 0,
+                    'throw': 0,
+                    'pen': 0
+                }
+            }
+
+        } else {
+            updates['/team/schedule/' + gameId + '/type'] = "practice";
+            if (snapshot.val() != "practice") {
+                updates['/team/schedule/' + gameId + '/statsFor'] = null
+                updates['/team/schedule/' + gameId + '/statsAgainst'] = null;
+            }
+        }
+        db.ref().update(updates);
+
+    });
 
     /*
     var team = JSON.parse(localStorage.getItem("team"));
@@ -129,4 +160,10 @@ function deleteG() {
         alert("Cancelled");
         return false;
     }
+}
+
+window.onload = function () {
+    document.getElementById("save").onclick = saveEvent;
+    document.getElementById("delete").onclick = deleteG;
+
 }

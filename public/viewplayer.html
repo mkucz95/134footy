@@ -8,38 +8,7 @@
 <link type="text/css" rel="stylesheet" href="table.css">            
 <title>View Player</title>
 <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-<script type="module">
-    import * as firebase from './db.js';
-    var db = firebase.database;
-
-    const url = window.location.href;
-    document.querySelector("#editButton").onclick=function(){window.location.href=`editplayer.html?id=${view}`};
-
-    function displayPlayer() {
-        db.ref('team/players/' + url.substr(url.length-1,1)).on('value', function(snapshot){
-              document.getElementById("position").innerHTML = snapshot.val().position;
-              document.getElementById("jerseynumber").innerHTML = snapshot.val().jerseynumber;
-              document.getElementById("dob").innerHTML = snapshot.val().dob;
-              document.getElementById("fname").innerHTML = snapshot.val().fname;
-              document.getElementById("lname").innerHTML = snapshot.val().lname;  
-          });
-        db.ref('team/players/' + url.substr(url.length-1,1) + '/stats').on('value', function(snapshot){
-            document.getElementById("goal").innerHTML = snapshot.val().goal;
-            document.getElementById("assist").innerHTML = snapshot.val().assist;
-            document.getElementById("shot").innerHTML = snapshot.val().shot;
-            document.getElementById("onGoal").innerHTML = snapshot.val().onGoal;
-            document.getElementById("foul").innerHTML = snapshot.val().foul;
-            document.getElementById("red").innerHTML = snapshot.val().red;
-            document.getElementById("yellow").innerHTML = snapshot.val().yellow;
-            document.getElementById("corner").innerHTML = snapshot.val().corner;
-            document.getElementById("gKick").innerHTML = snapshot.val().gKick;
-            document.getElementById("throw").innerHTML = snapshot.val().throw;
-            document.getElementById("pen").innerHTML = snapshot.val().pen;
-        });
-   }
-    window.onload = displayPlayer;
-</script>
-    <script type="module" src="permission.js"></script>    
+<script type="module" src="permission.js"></script>    
 <link rel="manifest" href="/manifest.json"></head>
     <body style="margin:0 0.1rem 0.1rem 0.1rem;">
         <header id="topPage">
@@ -74,6 +43,6 @@
                 <tr><td>Penalty Kicks</td><td id="pen">err</td></tr>
             </tbody>
         </table>
-        <script src="player.js"></script>            
+        <script type="module" src="player.js"></script>            
     </body>
 </html>
