@@ -1,7 +1,17 @@
-import database from './db.js';
+import {auth, database} from './db.js';
 
-const team = JSON.parse(localStorage.getItem("team"));
-console.log(team);
+var team;
+
+function getTeamVal(){
+    console.log("getTeamVal");
+    database.ref('team/').once("value").then(s=>
+        {team = s.val();
+            console.log(team);
+            displayNextGame();
+            updateSeasonStats();
+        });
+}
+
 var overallStats = {
     'win':0,
     'loss':0,
@@ -10,14 +20,11 @@ var overallStats = {
     'goalsAgainst':0
 }
 
-window.onload = function(){
-    displayNextGame();
-    updateSeasonStats();
-}
 function updateSeasonStats(){
     for(var i=0; i<team.schedule.length; i++){
         if(team.schedule[i].type == "match"){
         var goalFor = team.schedule[i].statsFor["goal"];
+        console.log(goalFor);
         var goalAgainst = team.schedule[i].statsAgainst["goal"];
         if(goalFor<goalAgainst){
             overallStats['loss'] += 1;
@@ -33,10 +40,9 @@ function updateSeasonStats(){
         }
     }
     ['win','loss','tie','goalsFor','goalsAgainst'].forEach(stat=>{
-        console.log(stat);
         let el = document.getElementById(stat);
         el.innerHTML = overallStats[stat];
-    })
+    });
 }
 
 function getCurrDate(){
@@ -49,9 +55,7 @@ function getCurrDate(){
 function findNextGame(){
     const today = Date.parse(getCurrDate()).value;
     for(let i=0;i<team.schedule.length-1; i++){
-        console.log(team.schedule[i].date);
         let eventDate = Date.parse(team.schedule[i].date);
-        console.log(eventDate);
             if(eventDate>=today){
                 console.log("event id: "+i);
                 if(eventDate = today){
@@ -71,4 +75,8 @@ function displayNextGame(){
         document.getElementById('type').innerHTML = 'Not Available';
         document.getElementById('extraInfo').style.visibility = 'hidden';
     }
+}
+window.onload = function(){
+    console.log("onload");
+    getTeamVal();
 }

@@ -23,9 +23,15 @@ function validate(){
     var email = document.getElementById("email").value;
     var pass = document.getElementById("password").value;
     var passCheck  = document.getElementById("confirmPassword").value;
-    var type = document.getElementsByName("who")[0].value;
-    console.log(document.getElementsByName("who")[0].value);    
+    var type;
+    for(let i=0;i<3;i++){
+        if(document.getElementsByName("who")[i].checked){
+            type=document.getElementsByName("who")[i].value;
+            break;
+        }
+    }
 
+    console.log(document.getElementsByName("who")[0].che);    
 
     var status = true;
     if(pass !== passCheck){
