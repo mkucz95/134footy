@@ -8,7 +8,6 @@
     <link type="text/css" rel="stylesheet" href="nav.css">
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
     <script type="module" src="permission.js"></script>
-    <script src="addgame.js"></script>
     <title>Add Game</title>
 <link rel="manifest" href="/manifest.json"></head>
 <body style="margin:0 0.1rem 0.1rem 0.1rem;">
@@ -33,6 +32,7 @@
             <label><input type="radio" id="match" name="gametype" value="match" required/>Match</label>
             <label><input type="radio" id="practice" name="gametype" value="practice"/>Practice</label>
     </div>
-        <button onclick="saveGame()">Add Game</button>
+        <button id="saveGame" onclick="saveGame()">Add Game</button>
+    <script type="module" src="addgame.js"></script>
 </body>
 </html>

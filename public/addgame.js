@@ -1,3 +1,4 @@
+/*
 var config = {
     apiKey: "AIzaSyCep4diOeZnGMpQIyeaO0RGCju42EKTkW4",
     authDomain: "footy-b0652.firebaseapp.com",
@@ -8,10 +9,11 @@ var config = {
 };
 firebase.initializeApp(config);
 var db = firebase.database();
-
+*/
 alert("start");
 
-
+import {auth, database} from './db.js';
+var db = database;
 
 function saveGame() {
     alert("hello");
@@ -109,4 +111,8 @@ function saveGame() {
     localStorage.setItem("team", JSON.stringify(team));
 
     window.location = "viewSchedule.html";*/
+}
+
+window.onload=function(){
+    document.getElementById("saveGame").onclick = saveGame;
 }
