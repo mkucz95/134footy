@@ -1,9 +1,10 @@
 import {auth, database } from './db.js';
 var db = database;
 
+
 function saveGame() {
 
-    db.ref('team/schedule').limitToLast(1).once('value').then(x => {
+    db.ref('/team/schedule').limitToLast(1).once('value').then(x => {
         x.forEach(y => {
             var newKey = (parseInt(y.key) + 1).toString();
             var location = "";
@@ -64,6 +65,7 @@ function saveGame() {
         });
     });
 
+    alert('Game Added.');
     window.location.href = "viewSchedule.html";
 
 
