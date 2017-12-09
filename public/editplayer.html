@@ -8,10 +8,10 @@
             <link type="text/css" rel="stylesheet" href="form.css">            
             <title>Edit Player</title>
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-    <script type="text/javascript" src="permission.js"></script>
+    <script type="module" src="permission.js"></script>
     <link rel="manifest" href="/manifest.json"></head>
     <body style="margin:0 0.1rem 0.1rem 0.1rem;">
-        <script src="editPlayer.js"></script>
+    
         <header id="topPage">
             <h1>Team MBR</h1>
             <nav>
@@ -39,10 +39,11 @@
             <input name="position" type="text" id="position" maxlength="20" placeholder="Midfield" value="Midfield">
                 <label for="captain">Captain:</label>
             <input  name="captain" id="captain" type="checkbox">        
-            <button type="submit" >Save Player</button>            
+            <button id="change" type="submit" >Save Player</button>            
         </form>
-            <button style="color:red; border-color:red;" onclick="confirmDelete()">Delete Player</button>
+            <button id="del" style="color:red; border-color:red;" onclick="confirmDelete()">Delete Player</button>
             <button id="confirmButton" style="color:red;visibility:hidden;border-color:red;font-size:1rem;" onclick="delplayer()">Confirm Deletion</button>
             <form name="deletePlayer" method="POST" action="viewSquad.html" style="display:none;"><input type="text" value="delete"></form>
+        <script type="module" src="editPlayer.js"></script>
     </body>
 </html>

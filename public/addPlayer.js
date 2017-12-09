@@ -12,10 +12,9 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.database();
 */
-
 function add() {
 
-    db.ref('team/players').limitToLast(1).once('value').then(x => {
+    db.ref('/team/players').limitToLast(1).once('value').then(x => {
         x.forEach(y => {
             var newKey = (parseInt(y.key) + 1).toString();
 
@@ -47,6 +46,7 @@ function add() {
             });
         });
     });
+    alert('Player added');
 }
 
 window.onload=function(){

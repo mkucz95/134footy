@@ -1,3 +1,4 @@
+/*
 var config = {
     apiKey: "AIzaSyCep4diOeZnGMpQIyeaO0RGCju42EKTkW4",
     authDomain: "footy-b0652.firebaseapp.com",
@@ -7,14 +8,16 @@ var config = {
     messagingSenderId: "141339264361"
 };
 firebase.initializeApp(config);
-var db = firebase.database();
+*/
+import {auth, database} from './db.js';
+var db = database;
 
 
 
 const url = window.location.href;
 const view = parseInt(url.substr(url.length - 1, 1));
 
-function displayPlayer() {
+
     db.ref('team/players/' + url.substr(url.length - 1, 1)).on('value', function (snapshot) {
         document.getElementById("position").placeholder = snapshot.val().position;
         document.getElementById("jerseynumber").placeholder = snapshot.val().jerseynumber;
@@ -45,8 +48,6 @@ function displayPlayer() {
     });
     document.getElementById("captain").checked = (edit.captain == 'true');
     document.getElementById("starter").checked = (edit.starter == 'true');*/
-}
-window.onload = displayPlayer;
 
 function change() {
     db.ref('team/players/' + url.substr(url.length - 1, 1) + '/stats').on('value', function (snapshot) {
@@ -76,6 +77,7 @@ function change() {
     */
     return true;
 }
+
 function confirmDelete() {
     document.querySelector("#confirmButton").style.visibility = "visible";
 }
@@ -86,4 +88,10 @@ function delplayer() {
     team.players.splice(view, 1);
     localStorage.setItem("team", JSON.stringify(team));*/
     document.forms["deletePlayer"].submit();
+}
+
+window.onload = function () {
+    document.getElementById("del").onclick = confirmDelete;
+    document.getElementById("change").onclick = change;
+    document.getElementById("confirmButton").onclick = delplayer;
 }

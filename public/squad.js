@@ -5,7 +5,6 @@ function buildHtml() {
     var today_month = today_date.getMonth();
     var today_day = today_date.getDate();
     var tBody = document.querySelector('#template');
-    var counter = 0;
 
     database.ref('team/players/').once('value').then(x => {
         x.forEach(y => {
@@ -22,11 +21,9 @@ function buildHtml() {
                     age--;
                 }
                 let el = document.createElement("tr");
-                el.id = counter;
                 el.innerHTML = `<td></td><td>${name}</td><td>${position}</td><td>${jerseynum}</td><td>${age}</td>`;
-                el.onclick = function () { edit(this.id) };
+                el.onclick = function () { edit(y.key) };
                 tBody.appendChild(el);
-                counter++;
             });
         });
     });
