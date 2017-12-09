@@ -1,3 +1,4 @@
+import{auth, database} from './db.js';
 
 var homeTeam = ["homegoal", "homeshot", "homeonGoal", "homefoul", "homered", "homeyellow", "homecorner", "homegKick", "homethrow", "homepen"];
 var awayTeam = ["awaygoal", "awayshot", "awayonGoal", "awayfoul", "awayred", "awayyellow", "awaycorner", "awaygKick", "awaythrow","awaypen"];
@@ -7,15 +8,10 @@ const url = window.location.href;
 const id = parseInt(url.substr(url.length-1,1));
 const todayDate = getCurrDate();
 
-var team = JSON.parse(localStorage.getItem("team"));            
-const match = team.schedule[id];
-
-    refreshAll();
-    updateFormPlayers();
-    updateHeaders(id);
-
-    var matchDate = team.schedule[id].date;
-    
+var team;
+var match;
+var matchDate;
+   
             var sendData = {
                 "action":0,
                 "assign":0,
@@ -23,20 +19,21 @@ const match = team.schedule[id];
             };
 
 window.onload = function(){
+    database.ref('team/').once("value").then(s=>{team = s.val();
+    match= team.schedule[id];
+    matchDate=team.schedule[id].date;
+    refreshAll();
+    updateFormPlayers();
+    updateHeaders(id);
+    statsAllowed();
+    });
+}     
+
+function statsAllowed(){
     let element = document.getElementById("edit_stats");
     if(element && todayDate !== team.schedule[id].date){
         element.onclick = '';
     }
-}
-
-function openEdit(element){
-    console.log("openEdit");
-    document.getElementById(element).style.visibility = "visible";
-}
-
-function closeEdit(element){
-    console.log("close");    
-    document.getElementById(element).style.visibility = "hidden";
 }
 
 function save(element){
@@ -63,17 +60,12 @@ function getCurrDate(){
 }
 
     function updateFormPlayers(){
-        console.log("updatePlayers");
-        var team = JSON.parse(localStorage.getItem("team"));
-        const sel = document.querySelector("#form-number");
-
+        var sel = document.querySelector("#form-number");
              team.players.forEach(function(player){
-                console.log(player);
                 let option = document.createElement("option");
                 option.text = player.lname +'-'+player.jerseynumber;
                 option.value = player.jerseynumber;
-                console.log(option.text);
-                sel.insertAdjacentHTML('afterbegin', option);
+                sel.appendChild(option);
              });
         }
 
@@ -111,19 +103,16 @@ function associateToPlayer(data){
  
     function updateHeaders(id){
         var opposition = team.schedule[id].opponent;
-        console.log(opposition);
-        console.log(document.getElementsByClassName("opponentName"));
         let el = document.getElementsByClassName("opponentName");
         el[0].innerHTML = opposition;
         el[1].innerHTML = opposition;
-
         let dateEL = document.getElementsByTagName("aside")[0];
         dateEL.innerHTML = match.date;
     }
 
         function refreshAll(){
             console.log("refreshAll");
-            ["goal", "assist", "shot", "onGoal", "foul", "red", "yellow", "corner", "gKick", "throw", "pen"].forEach(function(stat){
+            ["goal", "shot", "onGoal", "foul", "red", "yellow", "corner", "gKick", "throw", "pen"].forEach(function(stat){
                 console.log(stat);                
                 refresh(stat, "home");
                 refresh(stat, "away");
@@ -131,17 +120,13 @@ function associateToPlayer(data){
         }
 
         function refresh(stat, teamType){
-            let teamObj = JSON.parse(localStorage.getItem("team"));            
-            var match = teamObj.schedule[id];
-
             let selector = "#"+teamType+stat;
             let el = document.querySelector(selector);
 
-            let value;
             if(teamType === "home"){ 
-                value = match.statsFor[stat];
+                database.ref(`team/schedule/${id}/statsFor/${stat}`).once("value").then(s=>{el.innerHTML = s.val();});                   
             }
-            else value = match.statsAgainst[stat];
-
-            el.innerHTML = value;
+            else{
+                database.ref(`team/schedule/${id}/statsAgainst/${stat}`).once("value").then(s=>{el.innerHTML = s.val();});
+            }
         }

@@ -45,8 +45,6 @@ function buildHtml() {
                 newEl.innerHTML = `<td>${event.location} @ ${event.address}</td><td id="${counter}" onclick="view(this.id)"> ${event.date} at ${event.time}</td> <td> ${event.opponent}</td><td id="${counter}" onclick="edit(this.id)">edit</td>`;
                 el.insertAdjacentElement('beforeend', newEl);
                 counter++;
-
-
             });
         });
     });

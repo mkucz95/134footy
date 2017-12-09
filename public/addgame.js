@@ -1,17 +1,5 @@
-var config = {
-    apiKey: "AIzaSyCep4diOeZnGMpQIyeaO0RGCju42EKTkW4",
-    authDomain: "footy-b0652.firebaseapp.com",
-    databaseURL: "https://footy-b0652.firebaseio.com",
-    projectId: "footy-b0652",
-    storageBucket: "footy-b0652.appspot.com",
-    messagingSenderId: "141339264361"
-};
-firebase.initializeApp(config);
-var db = firebase.database();
-
-alert("start");
-
-
+import {auth, database } from './db.js';
+var db = database;
 
 function saveGame() {
     alert("hello");
@@ -22,7 +10,6 @@ function saveGame() {
             var type = "";
             var home_status = document.querySelector("#home");
             if (home_status) {
-
                 location = "Home";
             } else {
                 location = "Away";

@@ -9,6 +9,7 @@ var overallStats = {'win':0,'loss':0,'tie':0,'goalsFor':0,'goalsAgainst':0}
 function updateSeasonStats(){
     team.schedule.forEach(event=>{
         if(event.type == "match"){
+            console.log(event);
             var goalFor = parseInt(event.statsFor["goal"]);
             var goalAgainst = parseInt(event.statsAgainst["goal"]);
             if(goalFor<goalAgainst){overallStats['loss'] += 1;}
