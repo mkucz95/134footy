@@ -30,7 +30,7 @@ const view = parseInt((url.substr(url.length - 10, url.length)).split("=")[1]);
 
         document.getElementById("position").value = snapshot.val().position;
         document.getElementById("jerseynumber").value = snapshot.val().jerseynumber;
-        document.getElementById("dob").value = Date(snapshot.val().dob);
+        document.getElementById("dob").value = new Date(snapshot.val().dob);
         document.getElementById("fname").value = snapshot.val().fname;
         document.getElementById("lname").value = snapshot.val().lname;
         document.getElementById("email").value = snapshot.val().email;
