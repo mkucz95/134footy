@@ -65,10 +65,8 @@ var db = database;
     }*/
 
 function saveEvent() {
-    alert("hello");
     var gameId = localStorage.getItem("editGame");
     db.ref('/team/schedule/' + gameId + '/type').on('value', function (snapshot) {
-        alert(snapshot.val());
 
         var updates = {};
         updates['/team/schedule/' + gameId + '/opponent'] = document.getElementById("opponent").value;
@@ -119,7 +117,6 @@ function saveEvent() {
             }
         }
         db.ref().update(updates);
-        alert("done");
 
     });
 

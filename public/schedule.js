@@ -15,23 +15,16 @@ var db = firebase.database();
 
 
 buildHtml();
-function edit(id) {
-    localStorage.setItem('editGame', id);
-    window.location.href = 'editGame.html?i=' + id;
-}
-function view(id) {
-    localStorage.setItem('viewGame', id);
-    window.location.href = 'stats.html?i=' + id;
-}
+
 function buildHtml() {
     const matchErr = '<tr><td>No scheduled matches.</td></tr>';
     const practiceErr = '<tr><td>No scheduled practices.</td></tr>';
 
     //const teamSched = (JSON.parse(localStorage.getItem("team"))).schedule;
-    var sched = db.ref('team/schedule');
+    var sched = db.ref('/team/schedule');
     sched.once('value').then(x => {
         x.forEach(y => {
-            var fname = db.ref('team/schedule/' + y.key);
+            var fname = db.ref('/team/schedule/' + y.key);
             fname.once('value', function (snapshot) {
                 var event = snapshot.val();
                 var el;

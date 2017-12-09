@@ -8,6 +8,16 @@
     <link type="text/css" rel="stylesheet" href="table.css">
     <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
     <script type="module" src="permission.js"></script>
+    <script>
+        function edit(id) {
+            localStorage.setItem('editGame', id);
+            window.location.href = 'editGame.html?i=' + id;
+        }
+        function view(id) {
+            localStorage.setItem('viewGame', id);
+            window.location.href = 'stats.html?i=' + id;
+        }
+    </script>
     <title>View Schedule</title>
     <style>button{
         display: block;
