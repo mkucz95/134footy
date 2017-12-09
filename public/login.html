@@ -33,5 +33,12 @@
             <p id="loginError" style="visibility:hidden;">Login Error - Double Check Login Information</p>
         <button id="signup">New User</button>
         <script type="module" src="login.js"></script>
+    <script type="text/javascript">
+        if('serviceWorker' in navigator){
+            window.addEventListener('load', function(){
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }
+    </script>
 </body>
 </html>
