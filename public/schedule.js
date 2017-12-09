@@ -13,6 +13,7 @@ firebase.initializeApp(config);
 var db = firebase.database();
 
 
+
 buildHtml();
 function edit(id) {
     localStorage.setItem('editGame', id);
@@ -34,20 +35,20 @@ function buildHtml() {
             fname.once('value', function (snapshot) {
                 var event = snapshot.val();
                 var el;
-                if(event.type == "match") {
-                    el=document.querySelector("#matches");
-                }else {
-                    el=document.querySelector("#practices");
+                if (event.type == "match") {
+                    el = document.querySelector("#matches");
+                } else {
+                    el = document.querySelector("#practices");
                 }
 
                 var newEl = document.createElement('tr');
-                newEl.innerHTML = `<td>${event.location} @ ${event.address}</td><td id="${counter}" onclick="view(this.id)"> ${event.date} at ${event.time}</td> <td> ${event.opponent}</td><td class="edit permission" id="${counter}" onclick="edit(this.id)">edit</td>`;
-                el.insertAdjacentElement('beforeend',newEl);
+                newEl.innerHTML = `<td>${event.location} @ ${event.address}</td><td id="${counter}" onclick="view(this.id)"> ${event.date} at ${event.time}</td> <td> ${event.opponent}</td><td id="${counter}" onclick="edit(this.id)">edit</td>`;
+                el.insertAdjacentElement('beforeend', newEl);
                 counter++;
 
 
             });
-        })
+        });
     });
 
 
@@ -76,3 +77,4 @@ function buildHtml() {
          practices.innerHTML = practiceErr;        
      }*/
 }
+
