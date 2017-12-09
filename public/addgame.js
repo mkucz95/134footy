@@ -16,7 +16,7 @@ import {auth, database} from './db.js';
 var db = database;
 
 function saveGame() {
-    alert("hello");
+
     db.ref('team/schedule').limitToLast(1).once('value').then(x => {
         x.forEach(y => {
             var newKey = (parseInt(y.key) + 1).toString();
@@ -37,7 +37,6 @@ function saveGame() {
                 type = "practice";
             }
 
-            alert(document.querySelector("#opponent").value);
             db.ref('/team/schedule/' + newKey).set({
                 "opponent": document.querySelector("#opponent").value,
                 "date": document.querySelector("#date").value,
@@ -78,7 +77,7 @@ function saveGame() {
 
         });
     });
-    alert("done");
+
     window.location.href = "viewSchedule.html";
 
 
