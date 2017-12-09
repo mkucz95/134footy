@@ -54,8 +54,8 @@ self.addEventListener('install', function (event) {
 });
 
 //Updating ServiceWorker
-self.addEventListener('activate', function (e) {
-    e.waitUntil(
+self.addEventListener('activate', function (event) {
+    event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
                 if (key !== cacheID) {
