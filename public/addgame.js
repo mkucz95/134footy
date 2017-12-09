@@ -46,33 +46,34 @@ function saveGame() {
                 "type": type
             });
 
-            db.ref('/team/schedule/' + newKey + '/statsFor').set({
-                'assist': 0,
-                'goal': 0,
-                'shot': 0,
-                'onGoal': 0,
-                'foul': 0,
-                'red': 0,
-                'yellow': 0,
-                'corner': 0,
-                'gKick': 0,
-                'throw': 0,
-                'pen': 0
-            });
-            db.ref('/team/schedule/' + newKey + '/statsAgainst').set({
-                'assist': 0,
-                'goal': 0,
-                'shot': 0,
-                'onGoal': 0,
-                'foul': 0,
-                'red': 0,
-                'yellow': 0,
-                'corner': 0,
-                'gKick': 0,
-                'throw': 0,
-                'pen': 0
-            });
-
+            if(type == 'match'){
+                db.ref('/team/schedule/' + newKey + '/statsFor').set({
+                    'assist': 0,
+                    'goal': 0,
+                    'shot': 0,
+                    'onGoal': 0,
+                    'foul': 0,
+                    'red': 0,
+                    'yellow': 0,
+                    'corner': 0,
+                    'gKick': 0,
+                    'throw': 0,
+                    'pen': 0
+                });
+                db.ref('/team/schedule/' + newKey + '/statsAgainst').set({
+                    'assist': 0,
+                    'goal': 0,
+                    'shot': 0,
+                    'onGoal': 0,
+                    'foul': 0,
+                    'red': 0,
+                    'yellow': 0,
+                    'corner': 0,
+                    'gKick': 0,
+                    'throw': 0,
+                    'pen': 0
+                });
+            }
 
 
         });
