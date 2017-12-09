@@ -19,7 +19,6 @@ function add() {
         x.forEach(y => {
             var newKey = (parseInt(y.key) + 1).toString();
 
-
             db.ref('/team/players/' + newKey).set({
                 "fname": document.forms["newPlayer"]["fname"].value,
                 "lname": document.forms["newPlayer"]["lname"].value,
@@ -46,41 +45,8 @@ function add() {
                 'pen': 0
             });
 
-
-
-
         });
     });
-
-
-
-    /*alert("done");
-    db.ref('/team/players/2').set({
-        "fname": document.forms["newPlayer"]["fname"].value,
-        "lname": document.forms["newPlayer"]["lname"].value,
-        "profileImg": document.forms["newPlayer"]["profileImg"].value,
-        "email": document.forms["newPlayer"]["email"].value,
-        "dob": document.forms["newPlayer"]["dob"].value,
-        "jerseynumber": document.forms["newPlayer"]["jerseynumber"].value,
-        "position": document.forms["newPlayer"]["position"].value,
-        "captain": (document.forms["newPlayer"]["captain"].checked).toString(),
-        "starter": "false"
-    });
-
-    db.ref('/team/players/2/stats').set({
-        'assist': 0,
-        'goal': 0,
-        'shot': 0,
-        'onGoal': 0,
-        'foul': 0,
-        'red': 0,
-        'yellow': 0,
-        'corner': 0,
-        'gKick': 0,
-        'throw': 0,
-        'pen': 0
-    });
-    */
 }
 /*function add() {
     var team = JSON.parse(localStorage.getItem("team"));
