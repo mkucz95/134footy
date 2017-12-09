@@ -5,10 +5,13 @@
     <meta charset="utf-8" />
     <link type="text/css" rel="stylesheet" href="game_stats.css" />
     <link type="text/css" rel="stylesheet" href="nav.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Edit Game Stats</title>
-    <script type="text/javascript" src="permission.js"></script>
+    <script type="module" src="permission.js"></script>
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
@@ -26,10 +29,6 @@
         <table>
             <thead><tr><th> Goals</th></tr></thead>
             <tbody><tr><td id="homegoal">0</td><td id="awaygoal">0</td></tr></tbody>
-        </table>
-        <table>
-            <thead><tr><th>Assists</th></tr><thead>
-            <tbody><tr><td id="homeassist">0</td><td id="awayassist">0</td></tr></tbody>
         </table>
             <table>
             <thead><tr><th>Shots: Total | on Target</th></tr><thead>
@@ -87,7 +86,11 @@
                         <select id="form-action" name="action" required><option disabled value="">Choose</option><option value="add">+</option><option value="minus">-</option></select>
                     <button id="cancel" onclick="closeEdit('dataInput')">Cancel</button>
                     <button id="saveStat" onclick="save()">Save</button>     
-                 </div>            
-                 <script src="stats.js"></script>
+                 </div>
+                 <script type="text/javascript">
+                    function openEdit(element){document.getElementById(element).style.visibility = "visible";}
+                    function closeEdit(element){document.getElementById(element).style.visibility = "hidden";}
+                 </script>
+                 <script type="module" src="stats.js"></script>
         </body>
 </html>

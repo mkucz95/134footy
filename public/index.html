@@ -57,6 +57,13 @@
     </div>
     <br/>
     <button style="visibility:hidden;" id="gamestats" onclick="liveStats()">Live Game Stats</button>
-    <script type="module" src="logout.js"></script>    
+    <script type="module" src="logout.js"></script>  
+    <script type="text/javascript">
+        if('serviceWorker' in navigator){
+            window.addEventListener('load', function(){
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }  
+    </script>
 </body>
 </html>
