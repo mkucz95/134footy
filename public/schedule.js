@@ -35,7 +35,7 @@ function buildHtml() {
                 }
 
                 var newEl = document.createElement('tr');
-                newEl.innerHTML = `<td>${event.location} @ ${event.address}</td><td id="${y.key}" onclick="view(this.id)"> ${event.date} at ${event.time}</td> <td> ${event.opponent}</td><td class="edit permission" id="${y.key}" onclick="edit(this.id)">edit</td>`;
+                newEl.innerHTML = `<td>${event.location} @ ${event.address}</td><td id="${y.key}" onclick="view(this.id)"> ${event.date} at ${event.time}</td> <td> ${event.opponent}</td><td id="${y.key}" onclick="edit(this.id)">edit</td>`;
                 el.insertAdjacentElement('beforeend', newEl);
 
 
